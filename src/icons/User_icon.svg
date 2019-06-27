@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="258.844" height="258.844" viewBox="0 0 258.844 258.844">
+  <g id="User_icon" data-name="User icon" transform="translate(-132.576)">
+    <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(132.576)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="129.422" cy="129.422" r="129.422" stroke="none"/>
+      <circle cx="129.422" cy="129.422" r="128.922" fill="none"/>
+    </g>
+    <g id="Group_3" data-name="Group 3" transform="translate(206.667 69.894)">
+      <g id="Ellipse_8" data-name="Ellipse 8" transform="translate(30.188)" stroke="#000" stroke-linejoin="round" stroke-width="1">
+        <ellipse cx="24.069" cy="24.404" rx="24.069" ry="24.404" stroke="none"/>
+        <ellipse cx="24.069" cy="24.404" rx="23.569" ry="23.904" fill="none"/>
+      </g>
+      <g id="Rectangle_18" data-name="Rectangle 18" transform="translate(0 62.723)" stroke="#000" stroke-linejoin="round" stroke-width="1">
+        <path d="M56,0h0a53.008,53.008,0,0,1,53.008,53.008v4.423a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V56A56,56,0,0,1,56,0Z" stroke="none"/>
+        <path d="M55.993.5h0a52.516,52.516,0,0,1,52.516,52.516v3.7a.213.213,0,0,1-.213.213H.713A.213.213,0,0,1,.5,56.719v-.726A55.493,55.493,0,0,1,55.993.5Z" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

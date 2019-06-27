@@ -4,10 +4,14 @@ import Feature from './Feature.jsx';
 class Features extends Component {
   render() {
     const features = this.props.features.map(feature => {
-      return <Feature ime={feature.ime} ikona={feature.ikona} />;
+      return (
+        <Feature ime={feature.ime} ikona={feature.ikona} opis={feature.opis} />
+      );
     });
 
-    return <div className="mt-3">{features}</div>;
+    return (
+      <div style={{ width: '88%', margin: '6% auto 0 auto' }}>{features}</div>
+    );
   }
 }
 

@@ -4,7 +4,7 @@ import logo from '../icons/Logo.svg';
 function Header() {
   return (
     <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <a className="my-0 mr-md-auto font-weight-normal" href="#">
+      <a className="my-0 mr-md-auto font-weight-normal" href="/">
         <img style={{ width: '45px', height: '45px' }} src={logo} alt={''} />
       </a>
       {/* Navigation */}
@@ -12,21 +12,21 @@ function Header() {
         <a
           style={{ margin: '0% 2.6rem', 'font-size': '1.5em' }}
           className="fa-2x text-dark"
-          href=""
+          href="/"
         >
           <i className="fa fa-search" />
         </a>
         <a
           style={{ margin: '0% 2.6rem', 'font-size': '1.5em' }}
           className="text-dark"
-          href=""
+          href="/books"
         >
           <i className="fa fa-book" />
         </a>
         <a
           style={{ margin: '0% 2.6rem', 'font-size': '1.7em' }}
           className="text-dark"
-          href=""
+          href="/home"
         >
           <i class="fa fa-home" />
         </a>
