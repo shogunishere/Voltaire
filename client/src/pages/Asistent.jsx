@@ -24,6 +24,9 @@ class Asistent extends Component {
 
     const recognition = new window.SpeechRecognition();
 
+    // log recognition
+    console.log(recognition);
+
     // set language
     recognition.lang = 'en-US';
 
@@ -31,7 +34,6 @@ class Asistent extends Component {
     recognition.interimResults = true;
 
     recognition.onresult = event => {
-      console.log(recognition);
       const speechToText = event.results[0][0].transcript;
       console.log(speechToText);
 
@@ -40,73 +42,6 @@ class Asistent extends Component {
     };
     recognition.start();
   };
-
-  // speech syntesizer
-  // syntesize = () => {
-  //   var synth = window.speechSynthesis;
-  //   var inputForm = document.querySelector('form');
-  //   var inputTxt = document.querySelector('.txt');
-  //   var voiceSelect = document.querySelector('select');
-  //   var pitch = document.querySelector('#pitch');
-  //   var pitchValue = document.querySelector('.pitch-value');
-  //   var rate = document.querySelector('#rate');
-  //   var rateValue = document.querySelector('.rate-value');
-  //   var voices = [];
-
-  //   function populateVoiceList() {
-  //     voices = synth.getVoices();
-
-  //     for(i = 0; i < voices.length ; i++) {
-  //       var option = document.createElement('option');
-  //       option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-  //       if(voices[i].default) {
-  //         option.textContent += ' -- DEFAULT';
-  //       }
-
-  //       option.setAttribute('data-lang', voices[i].lang);
-  //       option.setAttribute('data-name', voices[i].name);
-  //       voiceSelect.appendChild(option);
-  //     }
-
-  //     populateVoiceList();
-  //     if (speechSynthesis.onvoiceschanged !== undefined) {
-  //       speechSynthesis.onvoiceschanged = populateVoiceList;
-  //     }
-  //   }
-  // }
-
-  // onFormSubmit = () => {
-  //   event.preventDefault();
-
-  //   var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-  //   var selectedOption = voiceSelect.selectedOptions[0].getAttribute(
-  //     'data-name'
-  //   );
-
-  //   for (i = 0; i < voices.length; i++) {
-  //     if (voices[i].name === selectedOption) {
-  //       utterThis.voice = voices[i];
-  //     }
-  //   }
-
-  //   utterThis.pitch = pitch.value;
-  //   utterThis.rate = rate.value;
-  //   synth.speak(utterThis);
-
-  //   utterThis.onpause = function(event) {
-  //     var char = event.utterance.text.charAt(event.charIndex);
-  //     console.log(
-  //       'Speech paused at character ' +
-  //         event.charIndex +
-  //         ' of "' +
-  //         event.utterance.text +
-  //         '", which is "' +
-  //         char +
-  //         '".'
-  //     );
-  //   };
-  // };
 
   render() {
     return (
@@ -122,6 +57,16 @@ class Asistent extends Component {
           >
             <i class="fa fa-microphone" />
           </a>
+          <div class="form-group">
+            <select id="voice-select" class="form-control form-control-lg">
+              <option data-lang="sl-SI" value="sl-SI">
+                Slovenščina
+              </option>
+              <option data-lang="en-US" value="en-US">
+                English
+              </option>
+            </select>
+          </div>
           <div className="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">
               Vi:
@@ -153,36 +98,6 @@ class Asistent extends Component {
             aria-label="With textarea"
           />
         </div>
-        <form>
-          <input type="text" class="txt" />
-          <div>
-            <label for="rate">Rate</label>
-            <input
-              type="range"
-              min="0.5"
-              max="2"
-              value="1"
-              step="0.1"
-              id="rate"
-            />
-            <div class="rate-value">1</div>
-            <div class="clearfix" />
-          </div>
-          <div>
-            <label for="pitch">Pitch</label>
-            <input
-              type="range"
-              min="0"
-              max="2"
-              value="1"
-              step="0.1"
-              id="pitch"
-            />
-            <div class="pitch-value">1</div>
-            <div class="clearfix" />
-          </div>
-          <select />
-        </form>
       </div>
     );
   }
