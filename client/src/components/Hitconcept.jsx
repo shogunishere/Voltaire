@@ -36,6 +36,7 @@ class Hitconcept extends Component {
         const result = res.data.extract;
 
         const fullArticleLink = res.data.content_urls.desktop.page;
+
         console.log(fullArticleLink);
 
         // set title
@@ -53,10 +54,17 @@ class Hitconcept extends Component {
   popoverItems = () => (
     <Fragment>
       <a
-        onClick={() => this.getSummaryAxios('Mafia')}
+        onClick={() => this.getSummaryAxios()}
         style={{ color: 'white', cursor: 'pointer' }}
       >
-        Hitconcept
+        Hitconcept &nbsp;|
+      </a>
+      <a
+        href="/asistent"
+        target="_blank"
+        style={{ color: 'white', cursor: 'pointer', textDecoration: 'none' }}
+      >
+        &nbsp; Asistent
       </a>
     </Fragment>
   );
@@ -72,12 +80,15 @@ class Hitconcept extends Component {
     console.log(text);
   };
 
+  // make the div movable
   render() {
     let alertBox = null;
 
     if (this.state.displayConcept) {
       alertBox = (
         <ConceptCard
+          id="concept-card"
+          style={{ zIndex: '2' }}
           display={this.state.display}
           onClose={this.closeAlertBox}
           fullArticleLink={this.state.fullArticleLink}
@@ -93,13 +104,8 @@ class Hitconcept extends Component {
         popoverItems={this.popoverItems}
       >
         <PDFReactViewer />
+
         {alertBox}
-        {/* <div className="container">
-          Palpatine ipsum dolor Michael Corleone amet consectetur adipisicing
-          elit. Quia , suscipit iste labore esse aut Anankin Skywalker Dr. Ford
-          autem, praesentium odit ratione sapiente architecto tempora, deserunt
-          soluta fugiat laborum at quis.
-        </div> */}
       </HighlightPop>
     );
   }

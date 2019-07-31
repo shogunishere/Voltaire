@@ -1,175 +1,26 @@
 import React, { Component } from 'react';
-import {Spring} from 'react-spring/renderprops'
-
+import { Spring } from 'react-spring/renderprops';
+import Knjiga from '../components/Knjiga';
 
 class Knjige extends Component {
+  state = {
+    knjige: this.props.knjige.map(knjiga => {
+      return <Knjiga ime={knjiga.ime} href={knjiga.href} />;
+    })
+  };
+
   render() {
     return (
-      <Spring
-  from={{ opacity: 0 }}
-  to={{ opacity: 1 }}>
-  {props => 
-  <div style={props}>
-    <div class="container text-center">
-        <h3 className="m-4">Knjige:</h3>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Matzapiski
-                </text>
-              </svg>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => (
+          <div style={props}>
+            <div class="container text-center">
+              <h3 className="m-4">Knjige:</h3>
+              <div class="row">{this.state.knjige}</div>
             </div>
           </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Biologija, Znam za več
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Zgodovina 2
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Matematika 3, Rokus Klett
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Slovenščina 3, Rokus Klett
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Slovenska slovnica na hitro
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Fizika 3
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Kemija 3
-                </text>
-              </svg>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg width="100%" height="225">
-                <rect width="100%" height="100%" fill="#000000" />
-                <text
-                  textAnchor="middle"
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >
-                  Angleščina 2018
-                </text>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>}
-</Spring>
-      
+        )}
+      </Spring>
     );
   }
 }

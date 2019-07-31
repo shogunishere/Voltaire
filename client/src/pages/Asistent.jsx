@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class Asistent extends Component {
+  state = {
+    jezik: ''
+  };
+
   ask = () => {
     // clear previous answer
     document.querySelector('#voltaire').value = '';
@@ -9,6 +13,14 @@ class Asistent extends Component {
     // get input question
     let question = document.querySelector('#vi').value;
     this.props.getAnswer(question);
+  };
+
+  // choose language
+  chooseLanguage = () => {
+    this.setState({ jezik: document.getElementById('voice-select').value });
+    console.log(
+      'Izbrani jezik: ' + document.getElementById('voice-select').value
+    );
   };
 
   // speech recognition
@@ -28,7 +40,7 @@ class Asistent extends Component {
     console.log(recognition);
 
     // set language
-    recognition.lang = 'en-US';
+    recognition.lang = this.state.jezik;
 
     // set to streaming
     recognition.interimResults = true;
@@ -58,7 +70,11 @@ class Asistent extends Component {
             <i class="fa fa-microphone" />
           </a>
           <div class="form-group">
-            <select id="voice-select" class="form-control form-control-lg">
+            <select
+              onChange={this.chooseLanguage}
+              id="voice-select"
+              class="form-control form-control-lg"
+            >
               <option data-lang="sl-SI" value="sl-SI">
                 Slovenščina
               </option>

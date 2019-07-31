@@ -7,8 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+rect:hover {
+  fill: grey;
+}
+#asistent:hover {
+  color: red;
+}
+
+.subject-link {
+  color: white;
+}
+
+.subject-link:hover {
+  color: grey;
 }

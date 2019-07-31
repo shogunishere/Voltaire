@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf';
 import samplePDF from '../pdfs/demo.pdf';
 import { pdfjs } from 'react-pdf';
+// import VoltaireAsistent from '../icons/Voltaire_krog.png';
+// import VoltaireAsistent from '../icons/Group_7.svg';
+import VoltaireAsistent from '../icons/Logo.svg';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${
@@ -68,7 +71,7 @@ class PDFReactViewer extends Component {
 
     return (
       <div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="navbar navbar-dark shadow-sm">
           <div class="container d-flex justify-content-between">
             <a
               className="btn btn-primary text-white  d-flex align-items-center"
@@ -78,9 +81,26 @@ class PDFReactViewer extends Component {
               Previous
             </a>
 
-            <p className="text-white">
+            <p className="">
               Page {pageNumber} of {numPages}
             </p>
+
+            <a
+              id="asistent"
+              style={{
+                position: 'fixed',
+                bottom: '2%',
+                right: '3%'
+              }}
+              href="/asistent"
+              target="_blank"
+            >
+              <img
+                style={{ width: '30px', height: 'auto' }}
+                src={VoltaireAsistent}
+                alt=""
+              />
+            </a>
 
             <a
               className="btn btn-primary text-white"

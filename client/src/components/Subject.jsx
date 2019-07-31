@@ -23,7 +23,10 @@ class Subject extends Component {
               className="bg-dark text-white text-center p-2"
             >
               <a
-                style={{ color: 'white', textDecoration: 'none' }}
+                className="subject-link"
+                style={{
+                  textDecoration: 'none'
+                }}
                 href={this.props.href}
               >
                 {ime}

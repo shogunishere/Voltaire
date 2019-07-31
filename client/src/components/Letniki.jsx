@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Spring} from 'react-spring/renderprops'
-
+import { Spring } from 'react-spring/renderprops';
 
 class Letniki extends Component {
   render() {
@@ -16,19 +15,22 @@ class Letniki extends Component {
           }}
           className="text-center bg-dark text-white"
         >
-          {letnik}
+          <a style={{ color: 'white' }} href={letnik.href}>
+            {letnik.ime}
+          </a>
         </div>
       );
     });
 
     return (
-      <Spring
-      from={{ opacity: 0 }}
-      to={{ opacity: 1 }}>
-      {props => 
-      <div style={props}>
-          <div style={{ width: '88%', margin: '6% auto 0 auto' }}>{letniki}</div>
-      </div>}
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => (
+          <div style={props}>
+            <div style={{ width: '88%', margin: '6% auto 0 auto' }}>
+              {letniki}
+            </div>
+          </div>
+        )}
       </Spring>
     );
   }
