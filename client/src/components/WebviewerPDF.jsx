@@ -1,9 +1,7 @@
 import React from 'react';
 
 export default class WebviewerPDF extends React.Component {
-
   constructor(props) {
-
     super(props);
     // references the PDF viewer ?
     this.viewerRef = React.createRef();
@@ -11,7 +9,6 @@ export default class WebviewerPDF extends React.Component {
   }
 
   componentDidMount() {
-
     // references the pdf
     const { src } = this.props;
 
@@ -21,9 +18,9 @@ export default class WebviewerPDF extends React.Component {
     this.backend.init(src, element);
   }
 
-  // onHighlight = () => {
-  //   this.backend.onHighlight();
-  // };
+  onHighlight = () => {
+    this.backend.onHighlight();
+  };
 
   render() {
     return (

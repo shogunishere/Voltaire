@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../icons/Logo.svg';
 
+import ResponsiveMenu from 'react-responsive-navbar';
+
 function Header() {
   return (
     <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -9,6 +11,13 @@ function Header() {
       </a>
       {/* Navigation */}
       <nav className="my-2 my-md-0 mr-md-3">
+        <input
+          style={{ display: 'inline' }}
+          type="text"
+          class="search-input"
+          placeholder="Išči"
+        />
+
         <a
           style={{ margin: '0% 2.6rem', 'font-size': '1.5em' }}
           className="fa-2x text-dark"

@@ -50,13 +50,14 @@ class ConceptCard extends Component {
       //         <div>{this.props.title}</div>
       //       </strong>
       //       <div>You must click my handle to drag me</div>
+
       <Draggable transform bounds="body" handle=".handle">
         <div
           style={{
-            transform: 'translate(-50%,-50%)',
-            position: 'fixed',
+            width: '35%',
+            position: 'absolute',
             top: '50%',
-            left: '50%'
+            right: '32.5%'
           }}
           id="concept-card"
           className="react-draggable-dragged card cursor"

@@ -41,10 +41,13 @@ class Hitconcept extends Component {
 
         // set title
         this.setState({ title: articleTitle });
+
         // set content
         this.setState({ content: result });
+
         // set display alert to true
         this.setState({ displayConcept: true });
+
         // set full article
         this.setState({ fullArticleLink: fullArticleLink });
       })

@@ -182,7 +182,7 @@ class Subjects extends Component {
                     </a>
                   </div>
                 </div>
-                <h3 className="m-4">Predmeti:</h3>
+                <h3 className="m-4">Raziskuj</h3>
                 {this.state.seznam}
               </div>
             </div>

@@ -5,7 +5,7 @@ import PDFJSBackend from './backends/pdf.js';
 import WebviewerBackend from './backends/webviewer';
 
 // react-spring
-import { Trail } from 'react-spring/renderprops';
+import { Trail, Spring } from 'react-spring/renderprops';
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
 // Components
@@ -16,6 +16,14 @@ import Features from './components/Features';
 import WebviewerPDF from './components/WebviewerPDF';
 import Letniki from './components/Letniki';
 import OKnjigi from './components/OKnjigi';
+import Explore from './components/Explore';
+import KreatorjiCarousel from './components/KreatorjiCarousel';
+import KreatorMaterial from './components/KreatorMaterial';
+import NavadenProfilKreatorji from './components/NavadenProfilKreatorji';
+import Iskanje from './pages/Iskanje';
+import Rezultati from './pages/Rezultati';
+import NavadenProfilSkupine from './components/NavadenProfilSkupine';
+import EditProfil from './components/EditProfil';
 
 // pdf viewers
 import PDFReactViewer from './components/PDFReactViewer';
@@ -25,12 +33,32 @@ import Hitconcept from './components/Hitconcept';
 import Knjige from './pages/Knjige';
 import Doma from './pages/Doma';
 import Asistent from './pages/Asistent';
+import KreatorProfil from './pages/KreatorProfil';
+import NavadenProfil from './pages/NavadenProfil';
+import Vsebina from './pages/Vsebina';
 
 // Slike
 import matematika from './images/math.jpg';
 import slovenščina from './images/slovenščina.jpg';
 import kemija from './images/kemija.jpg';
 import fizika from './images/physics.jpg';
+import blacklogo from './images/black_logo.png';
+import road from './images/action-asphalt-blur-315938.png';
+import create from './images/art-artwork-beautiful-1539581.png';
+import play from './images/play.png';
+import več from './images/več.svg';
+
+// Kreatorji
+import andraz from './images/adult-boy-casual-220453.png';
+import mia from './images/attractive-beautiful-beauty-1024311.png';
+import anja from './images/beautiful-brunette-cute-774909.png';
+
+// Content slike
+import odvod from './images/education-graphing-paper-homework-1.png';
+
+import informatika from './images/chip-circuit-circuit-board-163125.png';
+
+import funkcije from './images/education-graphing-paper-homework-1.png';
 
 // Ikone
 import VoltaireAsistent from './icons/Voltaire_krog.png';
@@ -98,6 +126,11 @@ class App extends Component {
   };
 
   state = {
+    dodaniKreatorji: JSON.parse(localStorage.getItem('kreatorji')),
+
+    material: JSON.parse(localStorage.getItem('material')),
+    groups: [],
+    mojeKnjige: [],
     predmeti: [
       {
         ime: 'Matematika',
@@ -116,15 +149,21 @@ class App extends Component {
               },
               {
                 ime: 'Znam matematiko 7',
-                href: '/mat/letniki/7/Znam_matematiko_7'
+                href: '/mat/letniki/7/Znam_matematiko_7',
+                opis:
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit delectus ipsa quaerat velit odio nam cupiditate? Tenetur aspernatur repellat id mollitia accusantium sit delectus eum, labore eveniet quos, quas eaque.'
               },
               {
                 ime: 'Oblike in funkcije',
-                href: '/mat/letniki/7/Oblike_in_funkcije'
+                href: '/mat/letniki/7/Oblike_in_funkcije',
+                opis:
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa repudiandae, adipisci nulla excepturi suscipit! Reprehenderit eligendi enim quasi velit nulla tempora. Harum illo voluptatibus, consectetur illum enim necessitatibus saepe.'
               },
               {
                 ime: 'Znam za več, Matematika 7',
-                href: '/mat/letniki/7/Znam_za_več,_Matematika_7'
+                href: '/mat/letniki/7/Znam_za_več,_Matematika_7',
+                opis:
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque esse repudiandae ratione, minus, eum odit dignissimos unde pariatur laboriosam at tempora nulla quae voluptate eveniet dolores molestiae cum! Officia, nostrum.'
               }
             ]
           },
@@ -191,25 +230,157 @@ class App extends Component {
     features: [
       {
         ime: 'Glasovni asistent Voltaire',
-        ikona: VoltaireAsistent,
+        ikona: blacklogo,
+        btnImage: play,
+        background: road,
         link: '/asistent',
         opis:
-          'Če imate na napravi mikrofon, izkoristite hitrost glasovnega modela in pospešite učenje'
+          'Med učenjem bliskovito preveri karkoli ne razumeš z glasovnim asistentom Voltaire'
       },
       {
-        ime: 'Organizacija',
-        ikona: Organizacija,
-        link: '/organizacija',
-        opis: 'Organizirajte mesece, dneve'
-      },
-      {
-        ime: 'Nastavitve',
-        ikona: Nastavitve,
-        link: '/nastavitve',
-        opis: 'Modificirajte svoj profil in aplikacijo v nastavitvah'
+        ime: 'Postanite kreator',
+        background: create,
+        ikona: '',
+        btnImage: več,
+        link: '',
+        opis:
+          'Izdeluješ dobre zapiske? Rad izdeluješ videe? Znaš sestaviti uporabne vaje in kvize? Hočeš zaslužiti?'
       }
     ],
-    answer: ''
+    answer: '',
+    kreatorji: [
+      {
+        ime: 'Andraž Karamazov',
+        content: [
+          {
+            ime: 'Odvod & Integral',
+            slika: odvod,
+            ocena: '4.3',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Informatika za maturo II. del',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Pregled funkcij',
+            slika: funkcije,
+            ocena: '4.1',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Statistika',
+            slika: odvod,
+            ocena: '4.3',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Predstavitev informacij',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Verjetnost',
+            slika: funkcije,
+            ocena: '4.1',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Statistika',
+            slika: odvod,
+            ocena: '4.3',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Predstavitev informacij',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Verjetnost',
+            slika: funkcije,
+            ocena: '4.1',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Statistika',
+            slika: odvod,
+            ocena: '4.3',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Predstavitev informacij',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Andraž Karamazov'
+          },
+          {
+            ime: 'Verjetnost',
+            slika: funkcije,
+            ocena: '4.1',
+            kreator: 'Andraž Karamazov'
+          }
+        ]
+      }
+    ]
+  };
+
+  dodajMaterial = contentObj => {
+    const newItem = {
+      ime: 'Odvod & Integral',
+      slika: odvod,
+      ocena: '4.3',
+      kreator: 'Andraž Karamazov'
+    };
+
+    // Retrieve localStorage content array
+    var materialArrray = JSON.parse(localStorage.getItem('material'));
+
+    materialArrray.push(contentObj);
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('material', JSON.stringify(materialArrray));
+  };
+
+  dodajKreatorja = () => {
+    console.log('Dodaj kreatorja called');
+
+    const newKreator = {
+      ime: 'Andraž Karamazov',
+      slika: andraz
+    };
+
+    // Retrieve localStorage kreator array
+    var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
+
+    kreatorArray.push(newKreator);
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
+  };
+
+  odstraniMaterial = () => {
+    // Retrieve localStorage content array
+    var materialArrray = JSON.parse(localStorage.getItem('material'));
+
+    materialArrray.splice(0, 1);
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('material', JSON.stringify(materialArrray));
+  };
+
+  odstraniKreatorja = () => {
+    // Retrieve localStorage content array
+    var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
+
+    kreatorArray.splice(0, 1);
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
   };
 
   // getting answer
@@ -232,7 +403,7 @@ class App extends Component {
       )
       .then(response => {
         // save answer to App state
-        this.setState({ answer: String(response.data) });
+        this.setState(prevState => ({ answer: String(response.data) }));
         document.querySelector('#voltaire').value = this.state.answer;
       })
       .catch(error => {
@@ -252,22 +423,68 @@ class App extends Component {
               exact
               render={props => (
                 <div>
+                  <Explore />
                   <Subjects
                     letniki={this.state.letniki}
                     predmeti={this.state.predmeti}
                   />
+                  <KreatorjiCarousel />
                   <Features features={this.state.features} />
+                  <div className="text-center card-footer">Voltaire 2019</div>
                 </div>
               )}
             />
+
             {/* Knjige */}
             <Route
               path="/books"
               exact
               render={props => (
-                <div>
-                  <Knjige />
-                </div>
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <Knjige
+                        odstraniMaterial={this.odstraniMaterial}
+                        page="Material"
+                        content={this.state.material}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            {/* Rezultati */}
+            <Route
+              path="/rezultati"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <Rezultati />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            {/* Kreator profil */}
+            <Route
+              path="/kreator/andrazk"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil dodajKreatorja={this.dodajKreatorja} />
+                      <KreatorMaterial
+                        kreator={this.state.kreatorji[0].ime}
+                        content={this.state.kreatorji[0].content}
+                      />
+                    </div>
+                  )}
+                </Spring>
               )}
             />
 
@@ -316,9 +533,11 @@ class App extends Component {
               path="/mat/letniki/7"
               exact
               render={props => (
-                <div>
-                  <Knjige knjige={this.state.predmeti[0].letniki[0].knjige} />
-                </div>
+                <Vsebina
+                  dodajMaterial={this.dodajMaterial}
+                  page="Matematika 7. razred"
+                  content={this.state.kreatorji[0].content}
+                />
               )}
             />
 
@@ -336,14 +555,60 @@ class App extends Component {
             {/* Odprta knjiga */}
             <Route path="/odprto" exact render={props => <Hitconcept />} />
 
+            {/* Web viewer */}
+            <Route
+              path="/webviewer"
+              exact
+              render={props => <WebviewerPDF backend={WebviewerBackend} />}
+            />
+
             {/* Doma */}
             <Route
               path="/home"
               exact
               render={props => (
-                <div>
-                  <Doma />
-                </div>
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <NavadenProfil />
+                      <NavadenProfilKreatorji
+                        odstraniKreatorja={this.odstraniKreatorja}
+                        kreatorji={this.state.dodaniKreatorji}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            {/* Doma - Skupine */}
+            <Route
+              path="/home/skupine"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <NavadenProfil />
+                      <NavadenProfilSkupine />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            {/* Doma - edit profil */}
+            <Route
+              path="/home/profi"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <EditProfil />
+                    </div>
+                  )}
+                </Spring>
               )}
             />
 

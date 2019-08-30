@@ -8,6 +8,8 @@ class Feature extends Component {
     const ime = this.props.ime;
     const link = this.props.link;
 
+    const background = this.props.background;
+
     return (
       <div class="jumbotron text-center">
         <a href={link}>

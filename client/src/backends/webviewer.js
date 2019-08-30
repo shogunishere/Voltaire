@@ -1,20 +1,21 @@
 export default class PDFTron {
-
   init = (source, element) => {
     this.viewer = new window.PDFTron.WebViewer(
       {
         path: '/WebViewer/lib',
-        initialDoc: source
+        initialDoc: 'myPDF.pdf'
       },
-      element
+      document.querySelector('#viewer')
     );
+
+    console.log(this.viewer);
   };
 
-  // onDocumentLoaded = function(instance) {
-  //   // Executed when the document is loaded
-  //   // NOTE: Document is not rendered yet
-  //   console.log(instance.getPageCount());
-  // };
+  onDocumentLoaded = function(instance) {
+    // Executed when the document is loaded
+    // NOTE: Document is not rendered yet
+    console.log(instance.getPageCount());
+  };
 
   // accessing Tools allows you to code custom behavior when user highlights text, so I have to locate them
 

@@ -18,17 +18,30 @@ class Features extends Component {
         to={{ marginLeft: 20, opacity: 1, transform: 'translate3d(0,0px,0)' }}
       >
         {feature => props => (
-          <div style={props} class="jumbotron text-center">
+          <div
+            style={{
+              marginBottom: 0,
+              props,
+              backgroundImage: `url(${feature.background})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+            class="text-white jumbotron text-center"
+          >
             <a href={feature.link}>
               <img src={feature.ikona} alt="" />
             </a>
 
             <p style={{ fontSize: '1.6em' }} className="mt-2 lead">
-              {feature.ime}
+              <h2>{feature.ime}</h2>
             </p>
             <p style={{ fontSize: '1.2em' }} className="font-weight-light">
               {feature.opis}
             </p>
+            <a href={feature.link}>
+              <img className="btnImage" src={feature.btnImage} alt="" />
+            </a>
           </div>
           // <Feature
           //   style={props}

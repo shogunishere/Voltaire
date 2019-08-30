@@ -19,7 +19,7 @@ class Subject extends Component {
         >
           <div className="p-2 container">
             <h3
-              style={{ width: '40%', margin: 'auto' }}
+              style={{ width: '40%', margin: 'auto', borderRadius: '29px' }}
               className="bg-dark text-white text-center p-2"
             >
               <a

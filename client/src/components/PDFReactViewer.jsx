@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf';
-import samplePDF from '../pdfs/demo.pdf';
+import samplePDF from '../pdfs/kemija.pdf';
 import { pdfjs } from 'react-pdf';
 // import VoltaireAsistent from '../icons/Voltaire_krog.png';
 // import VoltaireAsistent from '../icons/Group_7.svg';
 import VoltaireAsistent from '../icons/Logo.svg';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${
-  pdfjs.version
-}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class PDFReactViewer extends Component {
   state = {
