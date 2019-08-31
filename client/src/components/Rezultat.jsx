@@ -15,6 +15,7 @@ class Rezultat extends Component {
           ime={this.props.ime}
           naslov={this.props.naslov}
           rating={this.props.rating}
+          dodajKreatorja={this.props.dodajKreatorja}
         />
       );
     } else if (this.props.type === 'content') {

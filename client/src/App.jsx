@@ -251,6 +251,7 @@ class App extends Component {
     kreatorji: [
       {
         ime: 'Andraž Karamazov',
+        profilna: andraz,
         content: [
           {
             ime: 'Odvod & Integral',
@@ -325,18 +326,29 @@ class App extends Component {
             kreator: 'Andraž Karamazov'
           }
         ]
+      },
+      {
+        ime: 'Mia Silar',
+        profilna: mia,
+        content: [
+          {
+            ime: 'Understanding RAM',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Mia Silar'
+          },
+          {
+            ime: 'Matematika II',
+            slika: funkcije,
+            ocena: '4.2',
+            kreator: 'Mia Silar'
+          }
+        ]
       }
     ]
   };
 
   dodajMaterial = contentObj => {
-    const newItem = {
-      ime: 'Odvod & Integral',
-      slika: odvod,
-      ocena: '4.3',
-      kreator: 'Andraž Karamazov'
-    };
-
     // Retrieve localStorage content array
     var materialArrray = JSON.parse(localStorage.getItem('material'));
 
@@ -346,7 +358,7 @@ class App extends Component {
     localStorage.setItem('material', JSON.stringify(materialArrray));
   };
 
-  dodajKreatorja = () => {
+  dodajKreatorja = kreatorObj => {
     console.log('Dodaj kreatorja called');
 
     const newKreator = {
@@ -357,17 +369,17 @@ class App extends Component {
     // Retrieve localStorage kreator array
     var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
 
-    kreatorArray.push(newKreator);
+    kreatorArray.push(kreatorObj);
 
     // Update localStorage with new array of content objects
     localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
   };
 
-  odstraniMaterial = () => {
+  odstraniMaterial = index => {
     // Retrieve localStorage content array
     var materialArrray = JSON.parse(localStorage.getItem('material'));
 
-    materialArrray.splice(0, 1);
+    materialArrray.splice(index, 1);
 
     // Update localStorage with new array of content objects
     localStorage.setItem('material', JSON.stringify(materialArrray));
@@ -462,7 +474,10 @@ class App extends Component {
                 <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => (
                     <div style={props}>
-                      <Rezultati />
+                      <Rezultati
+                        dodajMaterial={this.dodajMaterial}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
                     </div>
                   )}
                 </Spring>
@@ -477,10 +492,34 @@ class App extends Component {
                 <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => (
                     <div style={props}>
-                      <KreatorProfil dodajKreatorja={this.dodajKreatorja} />
-                      <KreatorMaterial
+                      <KreatorProfil
+                        slika={this.state.kreatorji[0].profilna}
                         kreator={this.state.kreatorji[0].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorMaterial
                         content={this.state.kreatorji[0].content}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/mias"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[1].profilna}
+                        kreator={this.state.kreatorji[1].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorMaterial
+                        content={this.state.kreatorji[1].content}
                       />
                     </div>
                   )}

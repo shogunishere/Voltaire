@@ -3,6 +3,8 @@ import axios from 'axios';
 
 // components
 import Rezultat from '../components/Rezultat';
+import KreatorResult from '../components/KreatorResult';
+import ContentResult from '../components/ContentResult';
 
 // icons
 import video from '../icons/video.png';
@@ -24,9 +26,34 @@ import mia from '../images/attractive-beautiful-beauty-1024311.png';
 import anja from '../images/beautiful-brunette-cute-774909.png';
 
 // content
-import odvodinintegrali from '../images/education-graphing-paper-homework-1.png';
+import odvod from '../images/education-graphing-paper-homework-1.png';
+import DodanKreator from '../components/DodanKreator';
 
 class Rezultati extends Component {
+  state = {
+    rezultati: [
+      {
+        ime: 'Andraž Karamazov',
+        slika: andraz,
+        tip: 'kreator',
+        link: '/kreator/andrazk'
+      },
+      {
+        ime: 'Odvod & Integral',
+        slika: odvod,
+        ocena: '4.3',
+        kreator: 'Andraž Karamazov',
+        tip: 'content'
+      },
+      {
+        ime: 'Mia Silar',
+        slika: mia,
+        tip: 'kreator',
+        link: '/kreator/mias'
+      }
+    ]
+  };
+
   render() {
     return (
       <div className="text-center" style={{ margin: '100px 0' }}>
@@ -71,12 +98,33 @@ class Rezultati extends Component {
         </div>
         {/* testiranje rezultatov */}
         <div style={{ marginTop: '7%' }}>
-          <Rezultat
+          {this.state.rezultati.map(rezultatObj => {
+            if (rezultatObj.tip === 'kreator') {
+              return (
+                <KreatorResult
+                  dodajKreatorja={this.props.dodajKreatorja}
+                  kreatorObj={rezultatObj}
+                  link={rezultatObj.link}
+                />
+              );
+            } else {
+              return (
+                <ContentResult
+                  dodajMaterial={this.props.dodajMaterial}
+                  contentObj={rezultatObj}
+                />
+              );
+            }
+          })}
+
+          {/* <Rezultat
             type="kreator"
             slika={andraz}
             ime="Andraž Karamazov"
+            kreator
             naslov=""
             rating=""
+            dodajKreatorja={this.props.dodajKreatorja}
           />
           <Rezultat
             type="content"
@@ -91,7 +139,7 @@ class Rezultati extends Component {
             ime="Anja Novak"
             naslov=""
             rating=""
-          />
+          /> */}
         </div>
       </div>
     );

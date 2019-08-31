@@ -35,12 +35,12 @@ class KreatorProfil extends Component {
             width="165"
             height="165"
             className="profilna-slika"
-            src={profilnaSlika}
+            src={this.props.slika}
             alt=""
           />
 
           <span className="profil-ime">
-            Andraž Karamazov
+            {this.props.kreator}
             <img
               style={{ marginLeft: '8px', marginBottom: '4px' }}
               width="23"

@@ -15,18 +15,20 @@ class ContentResult extends Component {
             width="90"
             height="118"
             style={{ marginLeft: '10px' }}
-            src={this.props.slika}
+            src={this.props.contentObj.slika}
             alt=""
           />
 
           {/* <p className="ime-kreatorja">{this.props.ime}</p> */}
           <div style={{ display: 'inline-block', marginLeft: '18px' }}>
-            <p className="content-result-descr">{this.props.naslov}</p>
+            <p className="content-result-descr">{this.props.contentObj.ime}</p>
             <p className="content-result-descr">
-              {this.props.rating}
+              {this.props.contentObj.ocena}
               {/* <img className="rating-image" src={rating} alt="" /> */}
             </p>
-            <p className="content-result-descr">{this.props.ime}</p>
+            <p className="content-result-descr">
+              {this.props.contentObj.kreator}
+            </p>
           </div>
         </div>
 

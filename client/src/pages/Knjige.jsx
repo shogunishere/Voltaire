@@ -21,10 +21,11 @@ class Knjige extends Component {
           linkPrvegaGumba="/odprto"
           contentObj={content}
           ime={content.ime}
+          index={this.props.content.indexOf(content)}
         />
       );
     }),
-    filteredContent: []
+    filter: ''
   };
 
   componentDidMount() {
@@ -32,32 +33,12 @@ class Knjige extends Component {
   }
 
   filter = () => {
+    var filter = document.getElementById('filter').value;
 
-    let filteredMaterial = this.props.content.filter(contentObj => {
-      return contentObj.ime.toLowerCase().indexOf('') > -1;
-    });
-
-    console.log('filtering');
-    let list = this.state.material;
-
-    list.map(contentEl => {
-      console.log(contentEl.props.linkPrvegaGumba);
-
-      // if (contentObj.ime.toLowerCase().indexOf('') > -1) {
-      //   console.log(contentObj);
-      // }
-    });
-
-    this.state.material = '';
+    this.setState({ filter: filter });
   };
 
   render() {
-    let filteredMaterial = this.props.content.filter(contentObj => {
-      return contentObj.ime.toLowerCase().indexOf('') > -1;
-    });
-
-    console.log(filteredMaterial);
-
     return (
       <div
         style={{ display: 'grid', justifyContent: 'center' }}
@@ -112,7 +93,7 @@ class Knjige extends Component {
           </a>
         </div>
         <div id="kreator-material-mreza">
-          {filteredMaterial.map(content => {
+          {/* {this.state.filteredContent.map(content => {
             return (
               <MyContent
                 odstraniMaterial={this.props.odstraniMaterial}
@@ -120,6 +101,13 @@ class Knjige extends Component {
                 contentObj={content}
                 ime={content.ime}
               />
+            );
+          })} */}
+          {this.state.material.filter(contentComponent => {
+            return (
+              contentComponent.props.ime
+                .toLowerCase()
+                .indexOf(this.state.filter) > -1
             );
           })}
         </div>

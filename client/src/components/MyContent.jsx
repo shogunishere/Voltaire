@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import rating from '../icons/majhenRating.png';
 
 class MyContent extends Component {
+  odstraniMaterial = index => {
+    this.props.odstraniMaterial(index);
+  };
+
   render() {
     return (
       <div style={{ margin: '6% 0' }}>
@@ -45,11 +49,7 @@ class MyContent extends Component {
           >
             odpri
           </a>
-          <a
-            onClick={this.props.odstraniMaterial}
-            class="odpri-material "
-            href=""
-          >
+          <a onClick={this.odstraniMaterial} class="odpri-material " href="">
             odstrani
           </a>
           {/* <span className="content-descr">{this.props.ime}</span>
