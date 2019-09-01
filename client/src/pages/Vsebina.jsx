@@ -15,18 +15,50 @@ import več from '../icons/več.png';
 class Vsebina extends Component {
   state = {
     material: this.props.content.map(content => {
-      return (
-        <Content
-          dodajVsebino={this.props.dodajMaterial}
-          gumb1="dodaj"
-          gumb2="odpri"
-          contentObj={content}
-          slika={content.slika}
-          ime={content.ime}
-          ocena={content.ocena}
-        />
-      );
-    })
+      // Retrieve localStorage content array
+      var materialArrray = JSON.parse(localStorage.getItem('material'));
+
+      var imenaMaterialArray = materialArrray.map(content => {
+        return content.ime;
+      });
+
+      if (imenaMaterialArray.includes(content.ime)) {
+        return (
+          <Content
+            dodajVsebino={this.props.dodajMaterial}
+            gumb1="dodano"
+            gumb1Background="#b7b7b7"
+            gumb1Border="#b7b7b7"
+            gumb2="odpri"
+            contentObj={content}
+            slika={content.slika}
+            ime={content.ime}
+            ocena={content.ocena}
+          />
+        );
+      } else {
+        return (
+          <Content
+            dodajVsebino={this.props.dodajMaterial}
+            gumb1="dodaj"
+            gumb1Background="#23272b"
+            gumb2="odpri"
+            contentObj={content}
+            slika={content.slika}
+            ime={content.ime}
+            ocena={content.ocena}
+          />
+        );
+      }
+    }),
+
+    filter: ''
+  };
+
+  filter = () => {
+    var filter = document.querySelector('#filter').value;
+
+    this.setState({ filter: filter });
   };
 
   render() {
@@ -46,24 +78,12 @@ class Vsebina extends Component {
                   aria-describedby="basic-addon2"
                 /> */}
           <input
+            id="filter"
+            onKeyUp={this.filter}
             type="text"
             class="search-input"
-            placeholder="Iščite vsebino"
+            placeholder="Filtriraj vsebino"
           />
-
-          <a
-            class=" btn btn-dark"
-            href=""
-            style={{
-              margin: '20px 0',
-              width: '120px',
-              height: '40px',
-              fontSize: '1em',
-              borderRadius: '20px'
-            }}
-          >
-            išči
-          </a>
         </div>
 
         <div style={{ marginBottom: '7%' }} className="kreator-material-type">
@@ -80,7 +100,15 @@ class Vsebina extends Component {
             <img src={vaje} alt="" />
           </a>
         </div>
-        <div id="kreator-material-mreza">{this.state.material}</div>
+        <div id="kreator-material-mreza">
+          {this.state.material.filter(contentComponent => {
+            return (
+              contentComponent.props.ime
+                .toLowerCase()
+                .indexOf(this.state.filter) > -1
+            );
+          })}
+        </div>
 
         {/* see more ikona */}
         {/* <a style={{ color: 'black' }} href="">

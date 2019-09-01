@@ -3,7 +3,7 @@ export default class PDFTron {
     this.viewer = new window.PDFTron.WebViewer(
       {
         path: '/WebViewer/lib',
-        initialDoc: 'myPDF.pdf'
+        initialDoc: 'kemija.pdf'
       },
       document.querySelector('#viewer')
     );

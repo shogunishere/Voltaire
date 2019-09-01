@@ -25,9 +25,7 @@ class NavadenProfilKreatorji extends Component {
       console.log('Nobenih kreatorjev');
       value = (
         <div className="text-center" style={{ margin: '0 auto', width: '40%' }}>
-          <p style={{ fontSize: '1.3em' }}>
-            Zaenkrat še nisi dodal Kreatorjev.
-          </p>
+          <p style={{ fontSize: '1.3em' }}>Ni dodanih Kreatorjev.</p>
         </div>
       );
     } else {

@@ -140,31 +140,103 @@ class App extends Component {
           {
             ime: '7. razred',
             href: '/mat/letniki/7',
-            knjige: [
+            content: [
               {
-                ime: 'Matematika 7',
-                href: '/mat/letniki/7/Matematika_7',
-                opis:
-                  'Učbenik Matematika 7, za matematiko v sedmem razredu osnovne šole, temelji na metodično-didaktičnem konceptu, ki v učencih sistematično razvija matematično vedenje prek razumevanja; šele to daje znanju pravo vrednost in v učencih vzbuja zanimanje.'
+                ime: 'Odvod & Integral',
+                slika: odvod,
+                ocena: '4.3',
+                kreator: 'Andraž Karamazov'
               },
               {
-                ime: 'Znam matematiko 7',
-                href: '/mat/letniki/7/Znam_matematiko_7',
-                opis:
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit delectus ipsa quaerat velit odio nam cupiditate? Tenetur aspernatur repellat id mollitia accusantium sit delectus eum, labore eveniet quos, quas eaque.'
+                ime: 'Informatika za maturo II. del',
+                slika: informatika,
+                ocena: '4.5',
+                kreator: 'Andraž Karamazov'
               },
               {
-                ime: 'Oblike in funkcije',
-                href: '/mat/letniki/7/Oblike_in_funkcije',
-                opis:
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa repudiandae, adipisci nulla excepturi suscipit! Reprehenderit eligendi enim quasi velit nulla tempora. Harum illo voluptatibus, consectetur illum enim necessitatibus saepe.'
+                ime: 'Pregled funkcij',
+                slika: funkcije,
+                ocena: '4.1',
+                kreator: 'Andraž Karamazov'
               },
               {
-                ime: 'Znam za več, Matematika 7',
-                href: '/mat/letniki/7/Znam_za_več,_Matematika_7',
-                opis:
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque esse repudiandae ratione, minus, eum odit dignissimos unde pariatur laboriosam at tempora nulla quae voluptate eveniet dolores molestiae cum! Officia, nostrum.'
+                ime: 'Statistika',
+                slika: odvod,
+                ocena: '4.3',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Predstavitev informacij',
+                slika: informatika,
+                ocena: '4.5',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Verjetnost',
+                slika: funkcije,
+                ocena: '4.1',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Statistika',
+                slika: odvod,
+                ocena: '4.3',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Predstavitev informacij',
+                slika: informatika,
+                ocena: '4.5',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Verjetnost',
+                slika: funkcije,
+                ocena: '4.1',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Statistika',
+                slika: odvod,
+                ocena: '4.3',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Predstavitev informacij',
+                slika: informatika,
+                ocena: '4.5',
+                kreator: 'Andraž Karamazov'
+              },
+              {
+                ime: 'Verjetnost',
+                slika: funkcije,
+                ocena: '4.1',
+                kreator: 'Andraž Karamazov'
               }
+              // {
+              //   ime: 'Matematika 7',
+              //   href: '/mat/letniki/7/Matematika_7',
+              //   opis:
+              //     'Učbenik Matematika 7, za matematiko v sedmem razredu osnovne šole, temelji na metodično-didaktičnem konceptu, ki v učencih sistematično razvija matematično vedenje prek razumevanja; šele to daje znanju pravo vrednost in v učencih vzbuja zanimanje.'
+              // },
+              // {
+              //   ime: 'Znam matematiko 7',
+              //   href: '/mat/letniki/7/Znam_matematiko_7',
+              //   opis:
+              //     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit delectus ipsa quaerat velit odio nam cupiditate? Tenetur aspernatur repellat id mollitia accusantium sit delectus eum, labore eveniet quos, quas eaque.'
+              // },
+              // {
+              //   ime: 'Oblike in funkcije',
+              //   href: '/mat/letniki/7/Oblike_in_funkcije',
+              //   opis:
+              //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa repudiandae, adipisci nulla excepturi suscipit! Reprehenderit eligendi enim quasi velit nulla tempora. Harum illo voluptatibus, consectetur illum enim necessitatibus saepe.'
+              // },
+              // {
+              //   ime: 'Znam za več, Matematika 7',
+              //   href: '/mat/letniki/7/Znam_za_več,_Matematika_7',
+              //   opis:
+              //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque esse repudiandae ratione, minus, eum odit dignissimos unde pariatur laboriosam at tempora nulla quae voluptate eveniet dolores molestiae cum! Officia, nostrum.'
+              // }
             ]
           },
           { ime: '8. razred', href: '/mat/letniki/8' },
@@ -352,7 +424,25 @@ class App extends Component {
     // Retrieve localStorage content array
     var materialArrray = JSON.parse(localStorage.getItem('material'));
 
-    materialArrray.push(contentObj);
+    var imenaMaterialArray = materialArrray.map(content => {
+      return content.ime;
+    });
+
+    // console.log('Object: ');
+    // console.log(contentObj);
+
+    // console.log('Object Array: ');
+    // console.log(materialArrray);
+
+    // console.log('Array includes: ');
+    // console.log(materialArrray.indexOf(contentObj));
+
+    // Check if array contains item
+    if (imenaMaterialArray.includes(contentObj.ime)) {
+      alert('Že dodano.');
+    } else {
+      materialArrray.push(contentObj);
+    }
 
     // Update localStorage with new array of content objects
     localStorage.setItem('material', JSON.stringify(materialArrray));
@@ -575,7 +665,7 @@ class App extends Component {
                 <Vsebina
                   dodajMaterial={this.dodajMaterial}
                   page="Matematika 7. razred"
-                  content={this.state.kreatorji[0].content}
+                  content={this.state.predmeti[0].letniki[0].content}
                 />
               )}
             />

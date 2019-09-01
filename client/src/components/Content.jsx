@@ -42,6 +42,8 @@ class Content extends Component {
             className=" btn btn-dark text-white"
             href={this.props.linkPrvegaGumba}
             style={{
+              backgroundColor: this.props.gumb1Background,
+              border: this.props.gumb1Border,
               marginBottom: '20px',
               width: '120px',
               height: '40px',
