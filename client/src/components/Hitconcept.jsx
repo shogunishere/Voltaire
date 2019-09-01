@@ -3,7 +3,7 @@ import HighlightPop from 'react-highlight-pop';
 import ConceptCard from './ConceptCard';
 import PDFReactViewer from './PDFReactViewer';
 import WebviewerPDF from './WebviewerPDF';
-import PDFJSBackend from '../backends/pdf.js';
+import PDFJSBackend from '../backends/pdfjs';
 import WebviewerBackend from '../backends/webviewer';
 
 // axios

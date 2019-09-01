@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import PDFJSBackend from './backends/pdf.js';
+
 import WebviewerBackend from './backends/webviewer';
 
 // react-spring
 import { Trail, Spring } from 'react-spring/renderprops';
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
+
+// Webviewer
+import PDFViewer from './components/PDFViewer/PDFViewer';
+import PDFJSBackend from './backends/pdfjs';
 
 // Components
 import Header from './components/Header';
@@ -685,10 +689,13 @@ class App extends Component {
             <Route path="/odprto" exact render={props => <Hitconcept />} />
 
             {/* Web viewer */}
+            {/* <WebviewerPDF backend={WebviewerBackend} src="" /> */}
             <Route
               path="/webviewer"
               exact
-              render={props => <WebviewerPDF backend={WebviewerBackend} />}
+              render={props => (
+                <PDFViewer backend={PDFJSBackend} src="/kemija.pdf" />
+              )}
             />
 
             {/* Doma */}
