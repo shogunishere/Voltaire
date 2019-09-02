@@ -1,20 +1,12 @@
 export default class PDFTron {
   init = (source, element) => {
-    this.viewer = new window.PDFTron.WebViewer(
+    new window.PDFTron.WebViewer(
       {
         path: '/WebViewer/lib',
-        initialDoc: 'kemija.pdf'
+        initialDoc: source
       },
-      document.querySelector('#viewer')
+      element
     );
-
-    console.log(this.viewer);
-  };
-
-  onDocumentLoaded = function(instance) {
-    // Executed when the document is loaded
-    // NOTE: Document is not rendered yet
-    console.log(instance.getPageCount());
   };
 
   // accessing Tools allows you to code custom behavior when user highlights text, so I have to locate them

@@ -18,7 +18,7 @@ class Knjige extends Component {
       return (
         <MyContent
           odstraniMaterial={this.props.odstraniMaterial}
-          linkPrvegaGumba="/odprto"
+          linkPrvegaGumba="/webviewer"
           contentObj={content}
           ime={content.ime}
           index={this.props.content.indexOf(content)}

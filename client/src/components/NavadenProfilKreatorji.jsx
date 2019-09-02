@@ -33,7 +33,7 @@ class NavadenProfilKreatorji extends Component {
         return (
           <DodanKreator
             odstraniKreatorja={this.props.odstraniKreatorja}
-            slika={kreator.slika}
+            slika={kreator.profilna}
             ime={kreator.ime}
           />
         );

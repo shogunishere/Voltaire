@@ -33,8 +33,15 @@ class ContentResult extends Component {
         </div>
 
         <div className="kreator-gumba" style={{ display: 'inline-block' }}>
-          <a className="kreator-mini-gumb btn btn-dark text-white mb-3" href="">
-            dodaj
+          <a
+            style={{
+              backgroundColor: this.props.gumb1Background,
+              border: this.props.gumb1Border
+            }}
+            className="kreator-mini-gumb btn btn-dark text-white mb-3"
+            href=""
+          >
+            {this.props.gumb1}
           </a>
           <br />
           <a

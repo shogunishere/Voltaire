@@ -12,6 +12,10 @@ import editProfil from '../icons/editProfil1.png';
 import groups from '../icons/groups.png';
 
 class KreatorProfil extends Component {
+  dodajKreatorja = () => {
+    this.props.dodajKreatorja(this.props.kreatorObj);
+  };
+
   render() {
     return (
       <div
@@ -84,7 +88,7 @@ class KreatorProfil extends Component {
               marginBottom: '20px',
               fontSize: '1.15em'
             }}
-            onClick={this.props.dodajKreatorja}
+            onClick={this.dodajKreatorja}
             className="dodaj-gumb "
             href=""
           >

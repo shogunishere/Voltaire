@@ -21,7 +21,7 @@ class KreatorResult extends Component {
         <div className="profile-photo-and-name">
           <img
             className="profile-image-kreators"
-            src={this.props.kreatorObj.slika}
+            src={this.props.kreatorObj.profilna}
             alt=""
           />
 
@@ -40,11 +40,15 @@ class KreatorResult extends Component {
 
         <div className="kreator-gumba" style={{ display: 'inline-block' }}>
           <a
+            style={{
+              backgroundColor: this.props.gumb1Background,
+              border: this.props.gumb1Border
+            }}
             onClick={this.dodajKreatorja}
             className="kreator-mini-gumb btn btn-dark text-white mb-3"
             href=""
           >
-            dodaj
+            {this.props.gumb1}
           </a>
           <br />
           <a

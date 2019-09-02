@@ -130,6 +130,28 @@ class App extends Component {
   };
 
   state = {
+    rezultatiIskanja: [
+      {
+        ime: 'Andraž Karamazov',
+        profilna: andraz,
+        tip: 'kreator',
+        link: '/kreator/andrazk'
+      },
+      {
+        ime: 'Odvod & Integral',
+        slika: odvod,
+        ocena: '4.3',
+        kreator: 'Andraž Karamazov',
+        tip: 'content'
+      },
+      {
+        ime: 'Mia Silar',
+        profilna: mia,
+        tip: 'kreator',
+        link: '/kreator/mias'
+      }
+    ],
+
     dodaniKreatorji: JSON.parse(localStorage.getItem('kreatorji')),
 
     material: JSON.parse(localStorage.getItem('material')),
@@ -455,11 +477,6 @@ class App extends Component {
   dodajKreatorja = kreatorObj => {
     console.log('Dodaj kreatorja called');
 
-    const newKreator = {
-      ime: 'Andraž Karamazov',
-      slika: andraz
-    };
-
     // Retrieve localStorage kreator array
     var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
 
@@ -569,6 +586,7 @@ class App extends Component {
                   {props => (
                     <div style={props}>
                       <Rezultati
+                        rezultatiIskanja={this.state.rezultatiIskanja}
                         dodajMaterial={this.dodajMaterial}
                         dodajKreatorja={this.dodajKreatorja}
                       />
@@ -588,6 +606,7 @@ class App extends Component {
                     <div style={props}>
                       <KreatorProfil
                         slika={this.state.kreatorji[0].profilna}
+                        kreatorObj={this.state.kreatorji[0]}
                         kreator={this.state.kreatorji[0].ime}
                         dodajKreatorja={this.dodajKreatorja}
                       />
@@ -694,7 +713,7 @@ class App extends Component {
               path="/webviewer"
               exact
               render={props => (
-                <PDFViewer backend={PDFJSBackend} src="/kemija.pdf" />
+                <PDFViewer backend={WebviewerBackend} src="/kemija.pdf" />
               )}
             />
 
