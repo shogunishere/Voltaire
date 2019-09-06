@@ -39,6 +39,13 @@ class Knjige extends Component {
   };
 
   render() {
+    // if (this.props.content.length == 0) {
+    //   // save 'Ni dodane vsebine' in state.material
+    //   this.state.material == 'Ni dodane vsebine';
+    // } else {
+    //   // filter content and store markup in state.material
+    // }
+
     return (
       <div
         style={{ display: 'grid', justifyContent: 'center' }}
@@ -93,16 +100,6 @@ class Knjige extends Component {
           </a>
         </div>
         <div id="kreator-material-mreza">
-          {/* {this.state.filteredContent.map(content => {
-            return (
-              <MyContent
-                odstraniMaterial={this.props.odstraniMaterial}
-                linkPrvegaGumba="/odprto"
-                contentObj={content}
-                ime={content.ime}
-              />
-            );
-          })} */}
           {this.state.material.filter(contentComponent => {
             return (
               contentComponent.props.ime
@@ -110,6 +107,8 @@ class Knjige extends Component {
                 .indexOf(this.state.filter) > -1
             );
           })}
+
+          {/* should return state.material */}
         </div>
 
         {/* see more ikona */}

@@ -38,9 +38,9 @@ class Content extends Component {
           </p>
           <p className="content-details">{this.props.kreator}</p>
           <a
+            id="content-button-1"
             onClick={this.dodajVsebino}
             className=" btn btn-dark text-white"
-            href={this.props.linkPrvegaGumba}
             style={{
               backgroundColor: this.props.gumb1Background,
               border: this.props.gumb1Border,
@@ -53,7 +53,7 @@ class Content extends Component {
           >
             {this.props.gumb1}
           </a>
-          <a class="odpri-material " href="">
+          <a class="odpri-material " href="/webviewer">
             {this.props.gumb2}
           </a>
           {/* <span className="content-descr">{this.props.ime}</span>

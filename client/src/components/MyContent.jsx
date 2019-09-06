@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import rating from '../icons/majhenRating.png';
 
 class MyContent extends Component {
-  odstraniMaterial = index => {
-    this.props.odstraniMaterial(index);
+  odstraniMaterial = () => {
+    this.props.odstraniMaterial(this.props.index);
   };
 
   render() {

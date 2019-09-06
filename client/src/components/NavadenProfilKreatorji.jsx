@@ -30,6 +30,8 @@ class NavadenProfilKreatorji extends Component {
       );
     } else {
       value = kreatorji.map(kreator => {
+        console.log(kreator);
+
         return (
           <DodanKreator
             odstraniKreatorja={this.props.odstraniKreatorja}
@@ -58,7 +60,7 @@ class NavadenProfilKreatorji extends Component {
           </div>
           <div className="stat">
             <img src={editProfil} alt="" />
-            <a className="profil-options" href="">
+            <a className="profil-options" href="/home/profil">
               <span className="kreator-stats">Profil</span>
             </a>
           </div>

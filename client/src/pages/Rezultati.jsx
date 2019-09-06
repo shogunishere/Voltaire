@@ -5,6 +5,7 @@ import axios from 'axios';
 import Rezultat from '../components/Rezultat';
 import KreatorResult from '../components/KreatorResult';
 import ContentResult from '../components/ContentResult';
+import Skupina from '../components/Skupina';
 
 // icons
 import video from '../icons/video.png';
@@ -45,6 +46,12 @@ class Rezultati extends Component {
     var kreatorjiArray = JSON.parse(localStorage.getItem('kreatorji'));
     var kreatorjiArrayImena = kreatorjiArray.map(kreatorObj => {
       return kreatorObj.ime;
+    });
+
+    // Skupine array in array imen skupin, da lahko preverimo če je skupina že dodana
+    var skupineArray = JSON.parse(localStorage.getItem('skupine'));
+    var skupineArrayImena = skupineArray.map(skupinaObj => {
+      return skupinaObj.ime;
     });
 
     return (
@@ -120,7 +127,7 @@ class Rezultati extends Component {
                   />
                 );
               }
-            } else {
+            } else if (rezultatObj.tip === 'content') {
               // Preverimo če je material že dodan
               if (materialArrayImena.includes(rezultatObj.ime)) {
                 return (
@@ -140,6 +147,33 @@ class Rezultati extends Component {
                     gumb1Border="#23272b"
                     dodajMaterial={this.props.dodajMaterial}
                     contentObj={rezultatObj}
+                  />
+                );
+              }
+            } else {
+              // Preverimo če je kreator že dodan
+              if (skupineArrayImena.includes(rezultatObj.ime)) {
+                return (
+                  <Skupina
+                    ime={rezultatObj.ime}
+                    profilna={rezultatObj.profilna}
+                    gumb1="dodano"
+                    gumb1Background="#b7b7b7"
+                    gumb1Border="#b7b7b7"
+                    dodajSkupino={this.props.dodajSkupino}
+                    skupinaObj={rezultatObj}
+                  />
+                );
+              } else {
+                return (
+                  <Skupina
+                    ime={rezultatObj.ime}
+                    profilna={rezultatObj.profilna}
+                    gumb1="pridruži se"
+                    gumb1Background="#23272b"
+                    gumb1Border="#23272b"
+                    dodajKreatorja={this.props.dodajSkupino}
+                    skupinaObj={rezultatObj}
                   />
                 );
               }

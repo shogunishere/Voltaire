@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import rating from '../icons/rating.png';
 
 class ContentResult extends Component {
+  dodajMaterial = () => {
+    this.props.dodajMaterial(this.props.contentObj);
+  };
+
   render() {
     return (
       <div className="center dodan-kreator">
@@ -38,6 +42,7 @@ class ContentResult extends Component {
               backgroundColor: this.props.gumb1Background,
               border: this.props.gumb1Border
             }}
+            onClick={this.dodajMaterial}
             className="kreator-mini-gumb btn btn-dark text-white mb-3"
             href=""
           >
@@ -46,7 +51,7 @@ class ContentResult extends Component {
           <br />
           <a
             className="kreator-mini-gumb btn btn-white text-dark border border-black"
-            href=""
+            href="/webviewer"
           >
             odpri
           </a>

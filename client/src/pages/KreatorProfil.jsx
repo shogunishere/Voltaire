@@ -12,6 +12,40 @@ import editProfil from '../icons/editProfil1.png';
 import groups from '../icons/groups.png';
 
 class KreatorProfil extends Component {
+  // if (localStorage.getItem('kreatorji').includes(this.props.kreatorObj)) {
+  //   console.log('Dodano');
+  //   this.setState({ gumb1: 'Dodano' });
+  // } else {
+  //   this.setState({ gumb1: 'Dodaj' });
+  // }
+
+  state = {
+    gumb1: 'Dodaj',
+    gumb1Bg: 'rgb(183, 183, 183)'
+  };
+
+  componentDidMount() {
+    // Retrieve localStorage kreator array
+    var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
+
+    var imenaKreatorArray = kreatorArray.map(kreator => {
+      return kreator.ime;
+    });
+
+    // Check if array contains item
+    if (imenaKreatorArray.includes(this.props.kreatorObj.ime)) {
+      this.setState({
+        gumb1: 'Dodano',
+        gumb1Bg: 'rgb(183, 183, 183)'
+      });
+    } else {
+      this.setState({
+        gumb1: 'Dodaj',
+        gumb1Bg: 'rgb(35, 39, 43)'
+      });
+    }
+  }
+
   dodajKreatorja = () => {
     this.props.dodajKreatorja(this.props.kreatorObj);
   };
@@ -86,13 +120,15 @@ class KreatorProfil extends Component {
               width: '150px',
               display: 'block',
               marginBottom: '20px',
-              fontSize: '1.15em'
+              fontSize: '1.15em',
+              backgroundColor: this.state.gumb1Bg,
+              border: this.state.gumb1Bg
             }}
             onClick={this.dodajKreatorja}
             className="dodaj-gumb "
             href=""
           >
-            dodaj
+            {this.state.gumb1}
           </a>
           <a
             style={{

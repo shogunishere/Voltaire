@@ -18,7 +18,7 @@ class EditProfil extends Component {
         <div style={{ margin: '100px auto' }} className="profil-options-parent">
           <div className="stat">
             <img width="32" height="32" src={kreatorSimbol} alt="" />
-            <a className="profil-options " href="">
+            <a className="profil-options " href="/home">
               <span className="kreator-stats ">Kreatorji</span>
             </a>
           </div>
@@ -36,9 +36,6 @@ class EditProfil extends Component {
             </a>
           </div>
         </div>
-        <Skupina />
-        <Skupina />
-        <Skupina />
       </div>
     );
   }

@@ -440,3 +440,8 @@ input.rounded:focus {
   font-size: 1.05em;
   margin: 10px 0;
 }
+
+#content-button-1:hover {
+  cursor: pointer;
+  background-color: black;
+}

@@ -27,7 +27,11 @@ class KreatorjiCarousel extends Component {
                     Anja dela super videe iz matematike!
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/anjam"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>
@@ -39,7 +43,11 @@ class KreatorjiCarousel extends Component {
                     pisal 5.
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/andrazk"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>
@@ -51,7 +59,11 @@ class KreatorjiCarousel extends Component {
                     Mia ima super vaje za NPZ slovenščine!
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/mias"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>
@@ -69,7 +81,7 @@ class KreatorjiCarousel extends Component {
                   <p>
                     <a
                       class="btn btn-dark text-white"
-                      href="/kreator/andrazk"
+                      href="/kreator/anjam"
                       role="button"
                     >
                       Obišči profil
@@ -101,7 +113,7 @@ class KreatorjiCarousel extends Component {
                   <p>
                     <a
                       class="btn btn-dark text-white"
-                      href="/kreator/andrazk"
+                      href="/kreator/mias"
                       role="button"
                     >
                       Obišči profil
@@ -119,7 +131,11 @@ class KreatorjiCarousel extends Component {
                     Anja dela super videe iz matematike!
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/anjam"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>
@@ -131,7 +147,11 @@ class KreatorjiCarousel extends Component {
                     pisal 5.
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/andrazk"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>
@@ -143,7 +163,11 @@ class KreatorjiCarousel extends Component {
                     Mia ima super vaje za NPZ slovenščine!
                   </p>
                   <p>
-                    <a class="btn btn-dark text-white" href="#" role="button">
+                    <a
+                      class="btn btn-dark text-white"
+                      href="/kreator/mias"
+                      role="button"
+                    >
                       Obišči profil
                     </a>
                   </p>

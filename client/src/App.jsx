@@ -51,6 +51,7 @@ import road from './images/action-asphalt-blur-315938.png';
 import create from './images/art-artwork-beautiful-1539581.png';
 import play from './images/play.png';
 import več from './images/več.svg';
+import skupina2 from './images/1B.png';
 
 // Kreatorji
 import andraz from './images/adult-boy-casual-220453.png';
@@ -71,6 +72,8 @@ import Nastavitve from './icons/Nastavitve.png';
 
 import './App.css';
 
+import skupina from './images/alley-black-and-white-black-and-white-2216725.png';
+
 class App extends Component {
   constructor() {
     super();
@@ -81,6 +84,13 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // let skupinaObj = {
+    //   ime: '1A',
+    //   profilna: skupina
+    // };
+    // let skupineArray = JSON.parse(localStorage.getItem('skupine'));
+    // skupineArray.push(skupinaObj);
+    // localStorage.setItem('skupine', JSON.stringify(skupineArray));
     // window
     //   .WebViewer(
     //     {
@@ -130,6 +140,8 @@ class App extends Component {
   };
 
   state = {
+    skupine: JSON.parse(localStorage.getItem('skupine')),
+
     rezultatiIskanja: [
       {
         ime: 'Andraž Karamazov',
@@ -149,6 +161,16 @@ class App extends Component {
         profilna: mia,
         tip: 'kreator',
         link: '/kreator/mias'
+      },
+      {
+        ime: '1A',
+        profilna: skupina,
+        tip: 'skupina'
+      },
+      {
+        ime: '1B',
+        profilna: skupina2,
+        tip: 'skupina'
       }
     ],
 
@@ -442,36 +464,49 @@ class App extends Component {
             kreator: 'Mia Silar'
           }
         ]
+      },
+
+      {
+        ime: 'Anja Novak',
+        profilna: anja,
+        content: [
+          {
+            ime: 'Podatkovne baze',
+            slika: informatika,
+            ocena: '4.5',
+            kreator: 'Anja Novak'
+          },
+          {
+            ime: 'Geometrija',
+            slika: funkcije,
+            ocena: '4.2',
+            kreator: 'Anja Novak'
+          }
+        ]
       }
     ]
   };
 
   dodajMaterial = contentObj => {
-    // Retrieve localStorage content array
-    var materialArrray = JSON.parse(localStorage.getItem('material'));
+    alert('dodajMaterial called');
 
-    var imenaMaterialArray = materialArrray.map(content => {
+    // Retrieve localStorage content array
+    var materialArray = JSON.parse(localStorage.getItem('material'));
+
+    var imenaMaterialArray = materialArray.map(content => {
       return content.ime;
     });
-
-    // console.log('Object: ');
-    // console.log(contentObj);
-
-    // console.log('Object Array: ');
-    // console.log(materialArrray);
-
-    // console.log('Array includes: ');
-    // console.log(materialArrray.indexOf(contentObj));
 
     // Check if array contains item
     if (imenaMaterialArray.includes(contentObj.ime)) {
       alert('Že dodano.');
     } else {
-      materialArrray.push(contentObj);
+      materialArray.push(contentObj);
+      alert('Dodano');
     }
 
     // Update localStorage with new array of content objects
-    localStorage.setItem('material', JSON.stringify(materialArrray));
+    localStorage.setItem('material', JSON.stringify(materialArray));
   };
 
   dodajKreatorja = kreatorObj => {
@@ -484,6 +519,28 @@ class App extends Component {
 
     // Update localStorage with new array of content objects
     localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
+  };
+
+  dodajSkupino = skupinaObj => {
+    console.log('Dodaj skupino called');
+
+    // Retrieve localStorage kreator array
+    var skupineArray = JSON.parse(localStorage.getItem('skupine'));
+
+    let skupineImenaArray = skupineArray.map(skupina => {
+      return skupina.ime;
+    });
+
+    // Check if array contains item
+    if (skupineImenaArray.includes(skupinaObj.ime)) {
+      alert('Že dodano.');
+    } else {
+      skupineArray.push(skupinaObj);
+      alert('Dodano');
+    }
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('skupine', JSON.stringify(skupineArray));
   };
 
   odstraniMaterial = index => {
@@ -589,6 +646,7 @@ class App extends Component {
                         rezultatiIskanja={this.state.rezultatiIskanja}
                         dodajMaterial={this.dodajMaterial}
                         dodajKreatorja={this.dodajKreatorja}
+                        dodajSkupino={this.dodajSkupino}
                       />
                     </div>
                   )}
@@ -597,6 +655,7 @@ class App extends Component {
             />
 
             {/* Kreator profil */}
+
             <Route
               path="/kreator/andrazk"
               exact
@@ -612,6 +671,28 @@ class App extends Component {
                       />
                       <KreatorMaterial
                         content={this.state.kreatorji[0].content}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/anjam"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[2].profilna}
+                        kreatorObj={this.state.kreatorji[2]}
+                        kreator={this.state.kreatorji[2].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorMaterial
+                        content={this.state.kreatorji[2].content}
                       />
                     </div>
                   )}
@@ -745,7 +826,7 @@ class App extends Component {
                   {props => (
                     <div style={props}>
                       <NavadenProfil />
-                      <NavadenProfilSkupine />
+                      <NavadenProfilSkupine skupine={this.state.skupine} />
                     </div>
                   )}
                 </Spring>
@@ -754,12 +835,13 @@ class App extends Component {
 
             {/* Doma - edit profil */}
             <Route
-              path="/home/profi"
+              path="/home/profil"
               exact
               render={props => (
                 <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
                   {props => (
                     <div style={props}>
+                      <NavadenProfil />
                       <EditProfil />
                     </div>
                   )}
