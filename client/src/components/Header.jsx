@@ -40,7 +40,9 @@ function Header() {
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Išči" className="mr-sm-2" />
-          <Button variant="outline-info">Išči</Button>
+          <Button href="/rezultati" variant="outline-info">
+            Išči
+          </Button>
         </Form>
         {/* <Nav>
           <Nav.Link></Nav.Link>

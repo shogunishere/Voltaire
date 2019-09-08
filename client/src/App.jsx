@@ -160,6 +160,13 @@ class App extends Component {
         tip: 'content'
       },
       {
+        ime: 'Kvadratne enačbe',
+        slika: odvod,
+        ocena: '4.3',
+        kreator: 'Andraž Karamazov',
+        tip: 'content'
+      },
+      {
         ime: 'Mia Silar',
         profilna: mia,
         tip: 'kreator',
@@ -621,16 +628,22 @@ class App extends Component {
               path="/"
               exact
               render={props => (
-                <div>
-                  <Explore />
-                  <Subjects
-                    letniki={this.state.letniki}
-                    predmeti={this.state.predmeti}
-                  />
-                  <KreatorjiCarousel />
-                  <Features features={this.state.features} />
-                  <div className="text-center card-footer">Voltaire 2019</div>
-                </div>
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <Explore />
+                      <Subjects
+                        letniki={this.state.letniki}
+                        predmeti={this.state.predmeti}
+                      />
+                      <KreatorjiCarousel />
+                      <Features features={this.state.features} />
+                      <div className="text-center card-footer">
+                        Voltaire 2019
+                      </div>
+                    </div>
+                  )}
+                </Spring>
               )}
             />
 

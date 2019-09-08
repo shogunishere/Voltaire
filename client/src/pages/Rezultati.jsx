@@ -13,6 +13,7 @@ import zapiski from '../icons/zapiski.png';
 import kurikulum from '../icons/kurikulum.png';
 import vaje from '../icons/vaje.png';
 import kreatorSimbol from '../icons/kreatorSimbol.png';
+import skupine from '../icons/skupine.png';
 
 // ikona
 import rating from '../icons/rating.png';
@@ -31,8 +32,22 @@ import odvod from '../images/education-graphing-paper-homework-1.png';
 import DodanKreator from '../components/DodanKreator';
 
 class Rezultati extends Component {
+  componentDidMount() {
+    console.log(this.state.filter.length);
+  }
+
   state = {
-    rezultati: this.props.rezultatiIskanja
+    rezultati: this.props.rezultatiIskanja,
+    filter: localStorage.getItem('filterRezultatov')
+    // JSON.parse(localStorage.getItem('filter'))
+  };
+
+  filterResults = filter => {
+    localStorage.setItem('filterRezultatov', filter);
+
+    // if (filter === 'skupina') {
+    //   document.querySelector('#rezultati-skupine').style.color = 'red';
+    // }
   };
 
   render() {
@@ -59,20 +74,42 @@ class Rezultati extends Component {
         <h3>Rezultati</h3>
         <div style={{ width: '85%', margin: '0 auto' }}>
           <div className="kreator-material-type">
-            <a href="">
+            {/* <a onClick={() => this.filterResults('content')} href="">
               <img src={video} alt="" />
+            </a> */}
+            <a onClick={() => this.filterResults('content')} href="">
+              <img title="Vsebina" src={zapiski} alt="" />
             </a>
-            <a href="">
-              <img src={zapiski} alt="" />
+            <a onClick={() => this.filterResults('skupina')} href="">
+              <i
+                id="rezultati-skupine"
+                style={{ fontSize: '40px', color: 'black' }}
+                className=" fa fa-users"
+                title="Skupine"
+              ></i>
+
+              {/* <img
+                title="Skupine"
+                width="45"
+                height="36"
+                src={skupine}
+                alt=""
+              /> */}
             </a>
-            <a href="">
-              <img src={kurikulum} alt="" />
+            <a onClick={() => this.filterResults('kreator')} href="">
+              <img
+                title="Kreatorji"
+                width="40"
+                height="41"
+                src={kreatorSimbol}
+                alt=""
+              />
             </a>
-            <a href="">
-              <img width="36" height="37" src={kreatorSimbol} alt="" />
-            </a>
-            <a href="">
+            {/* <a onClick={() => this.filterResults('content')} href="">
               <img src={vaje} alt="" />
+            </a> */}
+            <a onClick={() => this.filterResults('')} href="">
+              <h3 style={{ color: 'black' }}>Vse</h3>
             </a>
           </div>
         </div>
@@ -99,85 +136,179 @@ class Rezultati extends Component {
         </div> */}
         {/* testiranje rezultatov */}
         <div style={{ marginTop: '7%' }}>
-          {this.state.rezultati.map(rezultatObj => {
-            console.log(rezultatObj.ime);
+          {/* Map through result objects in the state */}
 
-            if (rezultatObj.tip === 'kreator') {
-              // Preverimo če je kreator že dodan
-              if (kreatorjiArrayImena.includes(rezultatObj.ime)) {
-                return (
-                  <KreatorResult
-                    gumb1="dodano"
-                    gumb1Background="#b7b7b7"
-                    gumb1Border="#b7b7b7"
-                    dodajKreatorja={this.props.dodajKreatorja}
-                    kreatorObj={rezultatObj}
-                    link={rezultatObj.link}
-                  />
-                );
+          {this.state.rezultati.map(rezultatObj => {
+            // Check if there's a filter set
+            if (this.state.filter.length > 0) {
+              // Check the value of the filter to filter content only
+              if (this.state.filter === 'content') {
+                console.log('Filter set to: ' + this.state.filter);
+
+                // Preverimo če je objekt tipa 'content'
+                if (rezultatObj.tip === 'content') {
+                  console.log(rezultatObj);
+
+                  // Preverimo, če je že dodan
+                  if (materialArrayImena.includes(rezultatObj.ime)) {
+                    return (
+                      <ContentResult
+                        gumb1="dodano"
+                        gumb1Background="#b7b7b7"
+                        gumb1Border="#b7b7b7"
+                        dodajMaterial={this.props.dodajMaterial}
+                        contentObj={rezultatObj}
+                      />
+                    );
+                  } else {
+                    return (
+                      <ContentResult
+                        gumb1="dodaj"
+                        gumb1Background="#23272b"
+                        gumb1Border="#23272b"
+                        dodajMaterial={this.props.dodajMaterial}
+                        contentObj={rezultatObj}
+                      />
+                    );
+                  }
+                }
+              } else if (this.state.filter === 'kreator') {
+                if (rezultatObj.tip === 'kreator') {
+                  // Preverimo če je kreator že dodan
+                  if (kreatorjiArrayImena.includes(rezultatObj.ime)) {
+                    return (
+                      <KreatorResult
+                        gumb1="dodano"
+                        gumb1Background="#b7b7b7"
+                        gumb1Border="#b7b7b7"
+                        dodajKreatorja={this.props.dodajKreatorja}
+                        kreatorObj={rezultatObj}
+                        link={rezultatObj.link}
+                      />
+                    );
+                  } else {
+                    return (
+                      <KreatorResult
+                        gumb1="dodaj"
+                        gumb1Background="#23272b"
+                        gumb1Border="#23272b"
+                        dodajKreatorja={this.props.dodajKreatorja}
+                        kreatorObj={rezultatObj}
+                        link={rezultatObj.link}
+                      />
+                    );
+                  }
+                }
               } else {
-                return (
-                  <KreatorResult
-                    gumb1="dodaj"
-                    gumb1Background="#23272b"
-                    gumb1Border="#23272b"
-                    dodajKreatorja={this.props.dodajKreatorja}
-                    kreatorObj={rezultatObj}
-                    link={rezultatObj.link}
-                  />
-                );
-              }
-            } else if (rezultatObj.tip === 'content') {
-              // Preverimo če je material že dodan
-              if (materialArrayImena.includes(rezultatObj.ime)) {
-                return (
-                  <ContentResult
-                    gumb1="dodano"
-                    gumb1Background="#b7b7b7"
-                    gumb1Border="#b7b7b7"
-                    dodajMaterial={this.props.dodajMaterial}
-                    contentObj={rezultatObj}
-                  />
-                );
-              } else {
-                return (
-                  <ContentResult
-                    gumb1="dodaj"
-                    gumb1Background="#23272b"
-                    gumb1Border="#23272b"
-                    dodajMaterial={this.props.dodajMaterial}
-                    contentObj={rezultatObj}
-                  />
-                );
+                if (rezultatObj.tip === 'skupina') {
+                  // Preverimo če je kreator že dodan
+                  if (skupineArrayImena.includes(rezultatObj.ime)) {
+                    return (
+                      <Skupina
+                        ime={rezultatObj.ime}
+                        profilna={rezultatObj.profilna}
+                        gumb1="dodano"
+                        gumb1Background="#b7b7b7"
+                        gumb1Border="#b7b7b7"
+                        gumb2Display="none"
+                        dodajSkupino={this.props.dodajSkupino}
+                        skupinaObj={rezultatObj}
+                      />
+                    );
+                  } else {
+                    return (
+                      <Skupina
+                        ime={rezultatObj.ime}
+                        profilna={rezultatObj.profilna}
+                        gumb1="pridruži se"
+                        gumb1Background="#23272b"
+                        gumb1Border="#23272b"
+                        gumb2Display="none"
+                        dodajSkupino={this.props.dodajSkupino}
+                        skupinaObj={rezultatObj}
+                      />
+                    );
+                  }
+                }
               }
             } else {
-              // Preverimo če je kreator že dodan
-              if (skupineArrayImena.includes(rezultatObj.ime)) {
-                return (
-                  <Skupina
-                    ime={rezultatObj.ime}
-                    profilna={rezultatObj.profilna}
-                    gumb1="dodano"
-                    gumb1Background="#b7b7b7"
-                    gumb1Border="#b7b7b7"
-                    gumb2Display="none"
-                    dodajSkupino={this.props.dodajSkupino}
-                    skupinaObj={rezultatObj}
-                  />
-                );
+              if (rezultatObj.tip === 'kreator') {
+                // Preverimo če je kreator že dodan
+                if (kreatorjiArrayImena.includes(rezultatObj.ime)) {
+                  return (
+                    <KreatorResult
+                      gumb1="dodano"
+                      gumb1Background="#b7b7b7"
+                      gumb1Border="#b7b7b7"
+                      dodajKreatorja={this.props.dodajKreatorja}
+                      kreatorObj={rezultatObj}
+                      link={rezultatObj.link}
+                    />
+                  );
+                } else {
+                  return (
+                    <KreatorResult
+                      gumb1="dodaj"
+                      gumb1Background="#23272b"
+                      gumb1Border="#23272b"
+                      dodajKreatorja={this.props.dodajKreatorja}
+                      kreatorObj={rezultatObj}
+                      link={rezultatObj.link}
+                    />
+                  );
+                }
+              } else if (rezultatObj.tip === 'content') {
+                // Preverimo če je material že dodan
+                if (materialArrayImena.includes(rezultatObj.ime)) {
+                  return (
+                    <ContentResult
+                      gumb1="dodano"
+                      gumb1Background="#b7b7b7"
+                      gumb1Border="#b7b7b7"
+                      dodajMaterial={this.props.dodajMaterial}
+                      contentObj={rezultatObj}
+                    />
+                  );
+                } else {
+                  return (
+                    <ContentResult
+                      gumb1="dodaj"
+                      gumb1Background="#23272b"
+                      gumb1Border="#23272b"
+                      dodajMaterial={this.props.dodajMaterial}
+                      contentObj={rezultatObj}
+                    />
+                  );
+                }
               } else {
-                return (
-                  <Skupina
-                    ime={rezultatObj.ime}
-                    profilna={rezultatObj.profilna}
-                    gumb1="pridruži se"
-                    gumb1Background="#23272b"
-                    gumb1Border="#23272b"
-                    gumb2Display="none"
-                    dodajSkupino={this.props.dodajSkupino}
-                    skupinaObj={rezultatObj}
-                  />
-                );
+                // Preverimo če je kreator že dodan
+                if (skupineArrayImena.includes(rezultatObj.ime)) {
+                  return (
+                    <Skupina
+                      ime={rezultatObj.ime}
+                      profilna={rezultatObj.profilna}
+                      gumb1="dodano"
+                      gumb1Background="#b7b7b7"
+                      gumb1Border="#b7b7b7"
+                      gumb2Display="none"
+                      dodajSkupino={this.props.dodajSkupino}
+                      skupinaObj={rezultatObj}
+                    />
+                  );
+                } else {
+                  return (
+                    <Skupina
+                      ime={rezultatObj.ime}
+                      profilna={rezultatObj.profilna}
+                      gumb1="pridruži se"
+                      gumb1Background="#23272b"
+                      gumb1Border="#23272b"
+                      gumb2Display="none"
+                      dodajSkupino={this.props.dodajSkupino}
+                      skupinaObj={rezultatObj}
+                    />
+                  );
+                }
               }
             }
           })}
