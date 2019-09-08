@@ -28,6 +28,8 @@ import Iskanje from './pages/Iskanje';
 import Rezultati from './pages/Rezultati';
 import NavadenProfilSkupine from './components/NavadenProfilSkupine';
 import EditProfil from './components/EditProfil';
+import KreatorProfilKomentarji from './components/KreatorProfilKomentarji';
+import KreatorProfilOmeni from './components/KreatorProfilOmeni';
 
 // pdf viewers
 import PDFReactViewer from './components/PDFReactViewer';
@@ -40,6 +42,7 @@ import Asistent from './pages/Asistent';
 import KreatorProfil from './pages/KreatorProfil';
 import NavadenProfil from './pages/NavadenProfil';
 import Vsebina from './pages/Vsebina';
+import Chat from './pages/Chat';
 
 // Slike
 import matematika from './images/math.jpg';
@@ -351,7 +354,7 @@ class App extends Component {
       {
         ime: 'Glasovni asistent Voltaire',
         ikona: blacklogo,
-        btnImage: play,
+        btnImage: 'fa fa-microphone',
         background: road,
         link: '/asistent',
         opis:
@@ -361,7 +364,7 @@ class App extends Component {
         ime: 'Postanite kreator',
         background: create,
         ikona: '',
-        btnImage: več,
+        btnImage: 'fa fa-info-circle',
         link: '',
         opis:
           'Izdeluješ dobre zapiske? Rad izdeluješ videe? Znaš sestaviti uporabne vaje in kvize? Hočeš zaslužiti?'
@@ -488,8 +491,6 @@ class App extends Component {
   };
 
   dodajMaterial = contentObj => {
-    alert('dodajMaterial called');
-
     // Retrieve localStorage content array
     var materialArray = JSON.parse(localStorage.getItem('material'));
 
@@ -510,12 +511,20 @@ class App extends Component {
   };
 
   dodajKreatorja = kreatorObj => {
-    console.log('Dodaj kreatorja called');
-
     // Retrieve localStorage kreator array
     var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
 
-    kreatorArray.push(kreatorObj);
+    var imenaKreatorjevArray = kreatorArray.map(kreator => {
+      return kreator.ime;
+    });
+
+    // Check if array contains item
+    if (imenaKreatorjevArray.includes(kreatorObj.ime)) {
+      alert('Že dodano.');
+    } else {
+      kreatorArray.push(kreatorObj);
+      alert('Dodano');
+    }
 
     // Update localStorage with new array of content objects
     localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
@@ -553,14 +562,24 @@ class App extends Component {
     localStorage.setItem('material', JSON.stringify(materialArrray));
   };
 
-  odstraniKreatorja = () => {
+  odstraniKreatorja = index => {
     // Retrieve localStorage content array
     var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
 
-    kreatorArray.splice(0, 1);
+    kreatorArray.splice(index, 1);
 
     // Update localStorage with new array of content objects
     localStorage.setItem('kreatorji', JSON.stringify(kreatorArray));
+  };
+
+  odstraniSkupino = index => {
+    // Retrieve localStorage kreator array
+    var skupineArray = JSON.parse(localStorage.getItem('skupine'));
+
+    skupineArray.splice(index, 1);
+
+    // Update localStorage with new array of content objects
+    localStorage.setItem('skupine', JSON.stringify(skupineArray));
   };
 
   // getting answer
@@ -654,6 +673,20 @@ class App extends Component {
               )}
             />
 
+            <Route
+              path="/1A"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <Chat />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
             {/* Kreator profil */}
 
             <Route
@@ -670,8 +703,49 @@ class App extends Component {
                         dodajKreatorja={this.dodajKreatorja}
                       />
                       <KreatorMaterial
+                        dodajMaterial={this.dodajMaterial}
                         content={this.state.kreatorji[0].content}
                       />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/komentarji"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[0].profilna}
+                        kreatorObj={this.state.kreatorji[0]}
+                        kreator={this.state.kreatorji[0].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilKomentarji />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/omeni"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[0].profilna}
+                        kreatorObj={this.state.kreatorji[0]}
+                        kreator={this.state.kreatorji[0].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilOmeni />
                     </div>
                   )}
                 </Spring>
@@ -709,6 +783,7 @@ class App extends Component {
                     <div style={props}>
                       <KreatorProfil
                         slika={this.state.kreatorji[1].profilna}
+                        kreatorObj={this.state.kreatorji[1]}
                         kreator={this.state.kreatorji[1].ime}
                         dodajKreatorja={this.dodajKreatorja}
                       />
@@ -826,7 +901,10 @@ class App extends Component {
                   {props => (
                     <div style={props}>
                       <NavadenProfil />
-                      <NavadenProfilSkupine skupine={this.state.skupine} />
+                      <NavadenProfilSkupine
+                        skupine={this.state.skupine}
+                        odstraniSkupino={this.odstraniSkupino}
+                      />
                     </div>
                   )}
                 </Spring>

@@ -12,7 +12,7 @@ import groups from '../icons/groups.png';
 
 class DodanKreator extends Component {
   odstraniKreatorja = () => {
-    this.props.odstraniKreatorja();
+    this.props.odstraniKreatorja(this.props.index);
   };
 
   render() {

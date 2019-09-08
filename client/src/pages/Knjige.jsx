@@ -33,7 +33,7 @@ class Knjige extends Component {
   }
 
   filter = () => {
-    var filter = document.getElementById('filter').value;
+    var filter = document.getElementById('filter').value.toLowerCase();
 
     this.setState({ filter: filter });
   };

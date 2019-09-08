@@ -77,7 +77,7 @@ class KreatorProfil extends Component {
             alt=""
           />
 
-          <span className="profil-ime">
+          <span className="og-profil-ime">
             {this.props.kreator}
             <img
               style={{ marginLeft: '8px', marginBottom: '4px' }}
@@ -95,22 +95,17 @@ class KreatorProfil extends Component {
         <div className="profil-options-parent">
           <div className="stat">
             <img width="32" height="32" src={rating} alt="" />
-            <a className="profil-options" href="">
-              <span className="kreator-stats">4.3/5 ocena</span>
-            </a>
+            <span className="kreator-stats">4.3/5 ocena</span>
           </div>
 
           <div className="stat">
             <img width="32" height="32" src={dodano} alt="" />
-            <a className="profil-options" href="">
-              <span className="kreator-stats">7631 dodan</span>
-            </a>
+            <span className="kreator-stats">7631 dodan</span>
           </div>
           <div className="stat">
             <img width="32" height="32" src={inštrukcije} alt="" />
-            <a className="profil-options" href="">
-              <span className="kreator-stats">5 €/h tutorstvo</span>
-            </a>
+
+            <span className="kreator-stats">5 €/h tutorstvo</span>
           </div>
         </div>
 

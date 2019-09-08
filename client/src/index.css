@@ -74,7 +74,10 @@ input.rounded:focus {
 }
 
 .kreator-stats {
-  font-size: 1.3em;
+  color: black;
+  text-decoration-style: none;
+  text-decoration: none;
+  font-size: 1.15em;
 }
 
 .stat {
@@ -444,4 +447,27 @@ input.rounded:focus {
 #content-button-1:hover {
   cursor: pointer;
   background-color: black;
+}
+
+.nav-links {
+  margin: 0% 2.9rem;
+  font-size: 1.1em;
+  color: black;
+}
+
+#feature-icon:hover {
+  color: black;
+}
+
+/* style={{ margin: '0% 2.6rem', 'font-size': '1.5em' }}
+            className="fa-2x text-dark" */
+
+.stat:hover {
+  color: red;
+}
+
+#kreator-about {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 580px;
 }

@@ -24,10 +24,22 @@ class ContentResult extends Component {
           />
 
           {/* <p className="ime-kreatorja">{this.props.ime}</p> */}
-          <div style={{ display: 'inline-block', marginLeft: '18px' }}>
+          <div
+            style={{
+              display: 'inline-block',
+              marginLeft: '18px',
+              fontWeight: 'bold'
+            }}
+          >
             <p className="content-result-descr">{this.props.contentObj.ime}</p>
             <p className="content-result-descr">
-              {this.props.contentObj.ocena}
+              {this.props.contentObj.ocena}{' '}
+              <img
+                width="15"
+                height="15"
+                src={rating}
+                style={{ marginBottom: '5px' }}
+              />
               {/* <img className="rating-image" src={rating} alt="" /> */}
             </p>
             <p className="content-result-descr">

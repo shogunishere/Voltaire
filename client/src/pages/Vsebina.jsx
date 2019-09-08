@@ -56,7 +56,7 @@ class Vsebina extends Component {
   };
 
   filter = () => {
-    var filter = document.querySelector('#filter').value;
+    var filter = document.querySelector('#filter').value.toLowerCase();
 
     this.setState({ filter: filter });
   };

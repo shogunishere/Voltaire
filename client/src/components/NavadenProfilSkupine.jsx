@@ -12,20 +12,49 @@ import editProfil from '../icons/editProfil1.png';
 import groups from '../icons/groups.png';
 
 class NavadenProfilSkupine extends Component {
-  state = {
-    skupine: this.props.skupine.map(skupina => {
-      return (
-        <Skupina
-          gumb1="obišči"
-          gumb2Display="none"
-          ime={skupina.ime}
-          profilna={skupina.profilna}
-        />
-      );
-    })
-  };
+  // state = {
+  //   skupine: this.props.skupine.map(skupina => {
+  //     return (
+  //       <Skupina
+  //         odstraniSkupino={this.props.odstraniSkupino}
+  //         index={this.props.skupine.indexOf(skupina)}
+  //         gumb1="obišči"
+  //         gumb2Display=""
+  //         ime={skupina.ime}
+  //         profilna={skupina.profilna}
+  //       />
+  //     );
+  //   })
+  // };
 
   render() {
+    let skupine = this.props.skupine;
+    let value;
+
+    if (skupine.length === 0) {
+      console.log('Nobenih skupin');
+      value = (
+        <div className="text-center" style={{ margin: '0 auto', width: '40%' }}>
+          <p style={{ fontSize: '1.3em' }}>Ni dodanih skupin.</p>
+        </div>
+      );
+    } else {
+      value = skupine.map(skupina => {
+        console.log(skupina);
+
+        return (
+          <Skupina
+            odstraniSkupino={this.props.odstraniSkupino}
+            index={this.props.skupine.indexOf(skupina)}
+            gumb1="obišči"
+            gumb2Display=""
+            ime={skupina.ime}
+            profilna={skupina.profilna}
+          />
+        );
+      });
+    }
+
     return (
       <div style={{ marginTop: '100px' }} className="">
         <div style={{ margin: '100px auto' }} className="profil-options-parent">
@@ -50,7 +79,7 @@ class NavadenProfilSkupine extends Component {
             </a>
           </div>
         </div>
-        {this.state.skupine}
+        {value}
       </div>
     );
   }

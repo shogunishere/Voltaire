@@ -39,8 +39,8 @@ class Features extends Component {
             <p style={{ fontSize: '1.2em' }} className="font-weight-light">
               {feature.opis}
             </p>
-            <a href={feature.link}>
-              <img className="btnImage" src={feature.btnImage} alt="" />
+            <a style={{ fontSize: '4em', color: 'white' }} href={feature.link}>
+              <i id="feature-icon" className={feature.btnImage} />
             </a>
           </div>
           // <Feature

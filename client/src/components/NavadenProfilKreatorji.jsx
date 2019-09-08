@@ -37,6 +37,7 @@ class NavadenProfilKreatorji extends Component {
             odstraniKreatorja={this.props.odstraniKreatorja}
             slika={kreator.profilna}
             ime={kreator.ime}
+            index={this.props.kreatorji.indexOf(kreator)}
           />
         );
       });

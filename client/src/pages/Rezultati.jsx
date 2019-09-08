@@ -160,6 +160,7 @@ class Rezultati extends Component {
                     gumb1="dodano"
                     gumb1Background="#b7b7b7"
                     gumb1Border="#b7b7b7"
+                    gumb2Display="none"
                     dodajSkupino={this.props.dodajSkupino}
                     skupinaObj={rezultatObj}
                   />
@@ -172,7 +173,8 @@ class Rezultati extends Component {
                     gumb1="pridruži se"
                     gumb1Background="#23272b"
                     gumb1Border="#23272b"
-                    dodajKreatorja={this.props.dodajSkupino}
+                    gumb2Display="none"
+                    dodajSkupino={this.props.dodajSkupino}
                     skupinaObj={rezultatObj}
                   />
                 );

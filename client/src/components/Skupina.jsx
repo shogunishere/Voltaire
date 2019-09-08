@@ -8,6 +8,10 @@ class Skupina extends Component {
     this.props.dodajSkupino(this.props.skupinaObj);
   };
 
+  odstraniSkupino = () => {
+    this.props.odstraniSkupino(this.props.index);
+  };
+
   render() {
     return (
       <div className="center dodan-kreator">
@@ -35,6 +39,14 @@ class Skupina extends Component {
             href=""
           >
             {this.props.gumb1}
+          </a>
+          <br />
+          <a
+            style={{ display: this.props.gumb2Display, cursor: 'pointer' }}
+            className="kreator-mini-gumb btn btn-white text-dark border border-black"
+            onClick={this.odstraniSkupino}
+          >
+            odstrani
           </a>
         </div>
       </div>
