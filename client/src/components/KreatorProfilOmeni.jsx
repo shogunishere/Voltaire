@@ -8,30 +8,27 @@ class KreatorProfilOmeni extends Component {
         className="text-center"
       >
         <div
-          style={{
-            marginTop: '70px',
-            marginBottom: '100px',
-            fontSize: '1.5em'
-          }}
-          className="kreator-material-type"
+          style={{ margin: '100px 0' }}
+          className="kreator-pages text-center"
         >
-          <a className="kreator-options" href="/kreator/andrazk">
+          <a className="kreator-options" href={this.props.material}>
             Material
           </a>
-          <a className="kreator-options" href="/kreator/komentarji">
+          <a className="kreator-options" href={this.props.komentarji}>
             Komentarji
           </a>
           <a
             style={{ color: 'red' }}
             className="kreator-options"
-            href="/kreator/omeni"
+            href={this.props.omeni}
           >
             O meni
           </a>
         </div>
+
         <div
           style={{ fontSize: '1.2em', marginBottom: '20%' }}
-          id="kreator-about"
+          id="kreator-omeni-mreza"
         >
           Ime mi je Andraž. Sem v zadnjem letniku študija matematike. V prostem
           času rad izdelujem zapiske in delim svoje znanje.

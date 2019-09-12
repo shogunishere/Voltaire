@@ -20,7 +20,7 @@ class KreatorProfil extends Component {
   // }
 
   state = {
-    gumb1: 'Dodaj',
+    gumb1: 'dodaj',
     gumb1Bg: 'rgb(183, 183, 183)'
   };
 
@@ -35,7 +35,7 @@ class KreatorProfil extends Component {
     // Check if array contains item
     if (imenaKreatorArray.includes(this.props.kreatorObj.ime)) {
       this.setState({
-        gumb1: 'Dodano',
+        gumb1: 'dodano',
         gumb1Bg: 'rgb(183, 183, 183)'
       });
     } else {

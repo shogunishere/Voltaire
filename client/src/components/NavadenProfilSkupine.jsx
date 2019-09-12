@@ -58,6 +58,21 @@ class NavadenProfilSkupine extends Component {
     return (
       <div style={{ marginTop: '100px' }} className="">
         <div style={{ margin: '100px auto' }} className="profil-options-parent">
+          <a className="profil-options " href="/home">
+            Kreatorji
+          </a>
+          <a
+            style={{ color: 'red' }}
+            className="profil-options"
+            href="/home/skupine"
+          >
+            Skupine
+          </a>
+          <a className="profil-options" href="/home/profil">
+            Profil
+          </a>
+        </div>
+        {/* <div style={{ margin: '100px auto' }} className="profil-options-parent">
           <div className="stat">
             <img width="32" height="32" src={kreatorSimbol} alt="" />
             <a className="profil-options " href="/home">
@@ -78,7 +93,7 @@ class NavadenProfilSkupine extends Component {
               <span className="kreator-stats">Profil</span>
             </a>
           </div>
-        </div>
+        </div> */}
         {value}
       </div>
     );

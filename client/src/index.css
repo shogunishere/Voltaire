@@ -88,6 +88,7 @@ input.rounded:focus {
 }
 
 .kreator-options {
+  font-size: 1.15em;
   color: black;
 }
 
@@ -257,6 +258,45 @@ input.rounded:focus {
   }
 }
 
+#kreator-omeni-mreza {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 910px;
+}
+
+/* MEDIA QUERIES */
+
+/* Display 3 item row  */
+@media only screen and (min-width: 1500px) {
+  #kreator-omeni-mreza {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1240px;
+  }
+}
+
+/* Kreator o meni page */
+
+/* Display 2 item row  */
+@media only screen and (max-width: 1100px) {
+  #kreator-omeni-mreza {
+    display: grid;
+    justify-items: center;
+
+    grid-template-columns: 580px;
+  }
+}
+
+/* Display 1 item row  */
+@media only screen and (max-width: 760px) {
+  #kreator-omeni-mreza {
+    display: grid;
+    justify-items: center;
+    grid-gap: 80px;
+    grid-template-columns: 100%;
+  }
+}
+
 .content-details {
   margin: 0;
   height: 59px;
@@ -299,6 +339,7 @@ input.rounded:focus {
 .profil-options {
   color: black;
   text-decoration: none;
+  font-size: 1.15em;
 }
 
 .profil-options:hover {
@@ -317,7 +358,7 @@ input.rounded:focus {
   text-decoration: none;
   width: 120px;
   height: 40px;
-  font-size: 1em;
+  font-size: 1.15em;
   border: 1px solid black;
   border-radius: 20px;
 }

@@ -19,24 +19,20 @@ class KreatorProfilKomentarji extends Component {
         className="text-center"
       >
         <div
-          style={{
-            marginTop: '70px',
-            marginBottom: '100px',
-            fontSize: '1.5em'
-          }}
-          className="kreator-material-type"
+          style={{ margin: '100px 0' }}
+          className="kreator-pages text-center"
         >
-          <a className="kreator-options" href="/kreator/andrazk">
+          <a className="kreator-options" href={this.props.material}>
             Material
           </a>
           <a
             style={{ color: 'red' }}
             className="kreator-options"
-            href="/kreator/komentarji"
+            href={this.props.komentarji}
           >
             Komentarji
           </a>
-          <a className="kreator-options" href="/kreator/omeni">
+          <a className="kreator-options" href={this.props.omeni}>
             O meni
           </a>
         </div>

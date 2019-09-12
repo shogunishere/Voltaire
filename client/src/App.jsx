@@ -178,6 +178,11 @@ class App extends Component {
         tip: 'skupina'
       },
       {
+        ime: 'Matematika za vse!',
+        profilna: skupina,
+        tip: 'skupina'
+      },
+      {
         ime: '1B',
         profilna: skupina2,
         tip: 'skupina'
@@ -700,7 +705,7 @@ class App extends Component {
               )}
             />
 
-            {/* Kreator profil */}
+            {/* Andraž Karamazov (kreator profil)  */}
 
             <Route
               path="/kreator/andrazk"
@@ -716,6 +721,9 @@ class App extends Component {
                         dodajKreatorja={this.dodajKreatorja}
                       />
                       <KreatorMaterial
+                        material="/kreator/andrazk"
+                        komentarji="/kreator/andrazk/komentarji"
+                        omeni="/kreator/andrazk/omeni"
                         dodajMaterial={this.dodajMaterial}
                         content={this.state.kreatorji[0].content}
                       />
@@ -726,7 +734,7 @@ class App extends Component {
             />
 
             <Route
-              path="/kreator/komentarji"
+              path="/kreator/andrazk/komentarji"
               exact
               render={props => (
                 <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
@@ -738,7 +746,11 @@ class App extends Component {
                         kreator={this.state.kreatorji[0].ime}
                         dodajKreatorja={this.dodajKreatorja}
                       />
-                      <KreatorProfilKomentarji />
+                      <KreatorProfilKomentarji
+                        material="/kreator/andrazk"
+                        komentarji="/kreator/andrazk/komentarji"
+                        omeni="/kreator/andrazk/omeni"
+                      />
                     </div>
                   )}
                 </Spring>
@@ -746,7 +758,7 @@ class App extends Component {
             />
 
             <Route
-              path="/kreator/omeni"
+              path="/kreator/andrazk/omeni"
               exact
               render={props => (
                 <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
@@ -758,12 +770,18 @@ class App extends Component {
                         kreator={this.state.kreatorji[0].ime}
                         dodajKreatorja={this.dodajKreatorja}
                       />
-                      <KreatorProfilOmeni />
+                      <KreatorProfilOmeni
+                        material="/kreator/andrazk"
+                        komentarji="/kreator/andrazk/komentarji"
+                        omeni="/kreator/andrazk/omeni"
+                      />
                     </div>
                   )}
                 </Spring>
               )}
             />
+
+            {/* Anja Novak (kreator profil) */}
 
             <Route
               path="/kreator/anjam"
@@ -779,7 +797,58 @@ class App extends Component {
                         dodajKreatorja={this.dodajKreatorja}
                       />
                       <KreatorMaterial
+                        material="/kreator/anjam"
+                        komentarji="/kreator/anjam/komentarji"
+                        omeni="/kreator/anjam/omeni"
                         content={this.state.kreatorji[2].content}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/anjam/komentarji"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[2].profilna}
+                        kreatorObj={this.state.kreatorji[2]}
+                        kreator={this.state.kreatorji[2].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilKomentarji
+                        material="/kreator/anjam"
+                        komentarji="/kreator/anjam/komentarji"
+                        omeni="/kreator/anjam/omeni"
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/anjam/omeni"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[2].profilna}
+                        kreatorObj={this.state.kreatorji[2]}
+                        kreator={this.state.kreatorji[2].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilOmeni
+                        material="/kreator/anjam"
+                        komentarji="/kreator/anjam/komentarji"
+                        omeni="/kreator/anjam/omeni"
                       />
                     </div>
                   )}
