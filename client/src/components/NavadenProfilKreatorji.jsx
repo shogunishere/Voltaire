@@ -24,8 +24,8 @@ class NavadenProfilKreatorji extends Component {
     if (kreatorji.length === 0) {
       console.log('Nobenih kreatorjev');
       value = (
-        <div className="text-center" style={{ margin: '0 auto', width: '40%' }}>
-          <p style={{ fontSize: '1.3em' }}>Ni dodanih Kreatorjev.</p>
+        <div className="text-center container">
+          Ni dodanih kreatorjev
         </div>
       );
     } else {
@@ -38,6 +38,7 @@ class NavadenProfilKreatorji extends Component {
             slika={kreator.profilna}
             ime={kreator.ime}
             index={this.props.kreatorji.indexOf(kreator)}
+            link={kreator.link}
           />
         );
       });

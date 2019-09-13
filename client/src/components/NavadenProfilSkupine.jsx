@@ -34,8 +34,8 @@ class NavadenProfilSkupine extends Component {
     if (skupine.length === 0) {
       console.log('Nobenih skupin');
       value = (
-        <div className="text-center" style={{ margin: '0 auto', width: '40%' }}>
-          <p style={{ fontSize: '1.3em' }}>Ni dodanih skupin.</p>
+        <div className="text-center container">
+          Ni dodanih skupin
         </div>
       );
     } else {
@@ -56,7 +56,7 @@ class NavadenProfilSkupine extends Component {
     }
 
     return (
-      <div style={{ marginTop: '100px' }} className="">
+      <div style={{ margin: '100px 0' }} className="">
         <div style={{ margin: '100px auto' }} className="profil-options-parent">
           <a className="profil-options " href="/home">
             Kreatorji

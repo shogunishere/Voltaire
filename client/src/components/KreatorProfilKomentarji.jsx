@@ -12,6 +12,15 @@ import kurikulum from '../icons/kurikulum.png';
 import vaje from '../icons/vaje.png';
 
 class KreatorProfilKomentarji extends Component {
+
+  
+
+  state = {
+    komentarji: this.props.komentarjiArray.map(komentar => {
+      return <Komentar komentar={ komentar } komentator="Peter Klepec" />
+    })
+  }
+
   render() {
     return (
       <div
@@ -37,22 +46,18 @@ class KreatorProfilKomentarji extends Component {
           </a>
         </div>
 
-        <div style={{ marginBottom: '20%' }} id="kreator-material-mreza">
-          <Komentar komentar="Matematika je super!" komentator="Boris Novak" />
-          <Komentar
-            komentar="Men si ful pomagu pri maturi. Hvala!"
-            komentator="Marta Škrjanc"
-          />
-          <Komentar komentar="Ni slabo." komentator="Brin Colnar" />
-          <Komentar
-            komentar="Pa kaj pa vem no. Lahko bi blo bols."
-            komentator="Matevž Matjašec"
-          />
-          <Komentar komentar="Relativno slabo." komentator="Jurij Smole" />
-          <Komentar
-            komentar="Super, hvala ti. Najboljsi zapiski informatike na Voltairu."
-            komentator="Gary Bogdanovič"
-          />
+        {/* <div style={{ marginBottom: '20%' }} id="kreator-material-mreza">
+
+          {
+            this.state.komentarji
+          }
+        </div> */}
+
+        <div style={{ marginBottom: '100px' }} id="kreator-material-mreza">
+
+          {
+            this.state.komentarji
+          }
         </div>
       </div>
     );

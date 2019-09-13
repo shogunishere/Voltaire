@@ -386,6 +386,13 @@ class App extends Component {
     kreatorji: [
       {
         ime: 'Andraž Karamazov',
+        link: "/kreator/andrazk",
+        komentarji: [
+          "Men si ful pomagu pri maturi. Hvala!",
+          "Ni slabo.",
+          "Pa kaj pa vem no. Lahko bi blo bols."
+        ],
+        omeni: "Študent matematike v zadnjem letniku.",
         profilna: andraz,
         content: [
           {
@@ -464,6 +471,13 @@ class App extends Component {
       },
       {
         ime: 'Mia Silar',
+        link: "/kreator/mias",
+        komentarji: [
+          "Mia obvlada informatiko.",
+          "Meni je najbolj všeč Understanding RAM.",
+          "Bravo Mia, še tako naprej."
+        ],
+        omeni: "Sem Mia, v prostem času objavljam svoje zapiske iz gimnazije in študija informatike.",
         profilna: mia,
         content: [
           {
@@ -483,6 +497,13 @@ class App extends Component {
 
       {
         ime: 'Anja Novak',
+        link: "/kreator/anjam",
+        komentarji: [
+          "Anja ima super občutek za razlago!",
+          "Meni je najbolj všeč Geometrija.",
+          "Dobri zapiski, samo več objavljaj."
+        ],
+        omeni: "Sem Anja, študentka pedagogike v 2. letniku in preko Voltaira rada pomagam drugim",
         profilna: anja,
         content: [
           {
@@ -575,7 +596,7 @@ class App extends Component {
   };
 
   odstraniKreatorja = index => {
-    // Retrieve localStorage content array
+    // Retrieve localStorage kreatorji array
     var kreatorArray = JSON.parse(localStorage.getItem('kreatorji'));
 
     kreatorArray.splice(index, 1);
@@ -585,7 +606,7 @@ class App extends Component {
   };
 
   odstraniSkupino = index => {
-    // Retrieve localStorage kreator array
+    // Retrieve localStorage skupine array
     var skupineArray = JSON.parse(localStorage.getItem('skupine'));
 
     skupineArray.splice(index, 1);
@@ -750,6 +771,7 @@ class App extends Component {
                         material="/kreator/andrazk"
                         komentarji="/kreator/andrazk/komentarji"
                         omeni="/kreator/andrazk/omeni"
+                        komentarjiArray={this.state.kreatorji[0].komentarji}
                       />
                     </div>
                   )}
@@ -774,6 +796,7 @@ class App extends Component {
                         material="/kreator/andrazk"
                         komentarji="/kreator/andrazk/komentarji"
                         omeni="/kreator/andrazk/omeni"
+                        omeniString={this.state.kreatorji[0].omeni}
                       />
                     </div>
                   )}
@@ -825,6 +848,7 @@ class App extends Component {
                         material="/kreator/anjam"
                         komentarji="/kreator/anjam/komentarji"
                         omeni="/kreator/anjam/omeni"
+                        komentarjiArray={this.state.kreatorji[2].komentarji}
                       />
                     </div>
                   )}
@@ -849,6 +873,7 @@ class App extends Component {
                         material="/kreator/anjam"
                         komentarji="/kreator/anjam/komentarji"
                         omeni="/kreator/anjam/omeni"
+                        omeniString={this.state.kreatorji[2].omeni}
                       />
                     </div>
                   )}
@@ -870,7 +895,60 @@ class App extends Component {
                         dodajKreatorja={this.dodajKreatorja}
                       />
                       <KreatorMaterial
+                        material="/kreator/mias"
+                        komentarji="/kreator/mias/komentarji"
+                        omeni="/kreator/mias/omeni"
                         content={this.state.kreatorji[1].content}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/mias/komentarji"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[1].profilna}
+                        kreatorObj={this.state.kreatorji[1]}
+                        kreator={this.state.kreatorji[1].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilKomentarji
+                        material="/kreator/mias"
+                        komentarji="/kreator/mias/komentarji"
+                        omeni="/kreator/mias/omeni"
+                        komentarjiArray={this.state.kreatorji[1].komentarji}
+                      />
+                    </div>
+                  )}
+                </Spring>
+              )}
+            />
+
+            <Route
+              path="/kreator/mias/omeni"
+              exact
+              render={props => (
+                <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                  {props => (
+                    <div style={props}>
+                      <KreatorProfil
+                        slika={this.state.kreatorji[1].profilna}
+                        kreatorObj={this.state.kreatorji[1]}
+                        kreator={this.state.kreatorji[1].ime}
+                        dodajKreatorja={this.dodajKreatorja}
+                      />
+                      <KreatorProfilOmeni
+                        material="/kreator/mias"
+                        komentarji="/kreator/mias/komentarji"
+                        omeni="/kreator/mias/omeni"
+                        omeniString={this.state.kreatorji[1].omeni}
                       />
                     </div>
                   )}

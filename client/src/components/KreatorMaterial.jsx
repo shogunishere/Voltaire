@@ -75,7 +75,7 @@ class KreatorMaterial extends Component {
             O meni
           </a>
         </div>
-        <div style={{ marginBottom: '7%' }} className="kreator-material-type">
+        {/* <div style={{ marginBottom: '7%' }} className="kreator-material-type">
           <a href="">
             <img src={video} alt="" />
           </a>
@@ -88,7 +88,7 @@ class KreatorMaterial extends Component {
           <a href="">
             <img src={vaje} alt="" />
           </a>
-        </div>
+        </div> */}
         <div id="kreator-material-mreza">{this.state.material}</div>
       </div>
     );

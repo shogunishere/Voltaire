@@ -85,7 +85,7 @@ class Knjige extends Component {
           </a> */}
         </div>
 
-        <div style={{ marginBottom: '7%' }} className="kreator-material-type">
+        {/* <div style={{ marginBottom: '7%' }} className="kreator-material-type">
           <a href="">
             <img src={video} alt="" />
           </a>
@@ -98,8 +98,9 @@ class Knjige extends Component {
           <a href="">
             <img src={vaje} alt="" />
           </a>
-        </div>
-        <div id="kreator-material-mreza">
+        </div> */}
+
+        <div style={{ margin: "100px 0" }} id="kreator-material-mreza">
           {this.state.material.filter(contentComponent => {
             return (
               contentComponent.props.ime

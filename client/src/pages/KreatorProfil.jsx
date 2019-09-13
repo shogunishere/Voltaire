@@ -40,7 +40,7 @@ class KreatorProfil extends Component {
       });
     } else {
       this.setState({
-        gumb1: 'Dodaj',
+        gumb1: 'dodaj',
         gumb1Bg: 'rgb(35, 39, 43)'
       });
     }

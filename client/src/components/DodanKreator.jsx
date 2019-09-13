@@ -49,7 +49,7 @@ class DodanKreator extends Component {
           <br />
           <a
             className="kreator-mini-gumb btn btn-white text-dark border border-black"
-            href="/kreator/andrazk"
+            href={ this.props.link }
           >
             profil
           </a>

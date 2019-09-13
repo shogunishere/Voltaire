@@ -45,6 +45,7 @@ class Skupina extends Component {
             style={{ display: this.props.gumb2Display, cursor: 'pointer' }}
             className="kreator-mini-gumb btn btn-white text-dark border border-black"
             onClick={this.odstraniSkupino}
+            href=""
           >
             odstrani
           </a>

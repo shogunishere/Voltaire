@@ -14,7 +14,7 @@ import groups from '../icons/groups.png';
 class EditProfil extends Component {
   render() {
     return (
-      <div style={{ marginTop: '100px' }} className="">
+      <div style={{ margin: '100px 0' }} className="">
         <div style={{ margin: '100px auto' }} className="profil-options-parent">
           <a className="profil-options " href="/home">
             Kreatorji
@@ -29,6 +29,8 @@ class EditProfil extends Component {
           >
             Profil
           </a>
+
+          
         </div>
         {/* <div style={{ margin: '100px auto' }} className="profil-options-parent">
           <div className="stat">
@@ -51,6 +53,10 @@ class EditProfil extends Component {
             </a>
           </div>
         </div> */}
+
+          <div className="text-center container">
+            Tu si boste kmalu lahko uredili profil.
+          </div>
       </div>
     );
   }

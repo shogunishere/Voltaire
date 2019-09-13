@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class KreatorProfilOmeni extends Component {
+
+  state = {
+    omeni: this.props.omeniString
+  } 
+
   render() {
     return (
       <div
@@ -26,16 +31,17 @@ class KreatorProfilOmeni extends Component {
           </a>
         </div>
 
-        <div
+        {/* <div
           style={{ fontSize: '1.2em', marginBottom: '20%' }}
           id="kreator-omeni-mreza"
         >
-          Ime mi je Andraž. Sem v zadnjem letniku študija matematike. V prostem
-          času rad izdelujem zapiske in delim svoje znanje.
-          <br /> <br /> Upam da vam moja vsebina pomaga priti do boljših
-          rezultatov hitreje in nekoliko zabavneje.
-          <br /> <br /> <br />
-          Ponujam tudi tutorstvo. Kontaktirajte me in se zmeniva za termin.
+          { this.state.omeni } 
+        </div> */}
+        <div
+          style={{ marginBottom: '100px',}}
+          id="kreator-omeni-mreza"
+        >
+          { this.state.omeni } 
         </div>
       </div>
     );
